@@ -704,19 +704,11 @@ tbody tr:hover td{background:var(--BG)}
 
     <!-- ══════ TOKENS ══════ -->
     <div class="pg" id="pg-tokens">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
         <div style="flex:1">
           <h1 style="font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px">Tokens de API</h1>
-          <p style="font-size:13px;color:var(--MU)">Autentica todos os requests com um token Bearer.</p>
+          <p style="font-size:13px;color:var(--MU)">Cada coleção tem o seu próprio token exclusivo</p>
         </div>
-        <button class="btn btn-p" onclick="openMo('mt')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Novo Token
-        </button>
-      </div>
-      <div class="info-banner">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <p>Inclui o token em cada request: <code>Authorization: Bearer &lt;token&gt;</code> — ou como query param: <code>?token=&lt;token&gt;</code></p>
       </div>
       <div id="tokens-list"></div>
     </div>
@@ -917,35 +909,39 @@ GET /api/colecao?token=<span class="cs" id="docs-token-example2">apl_xxx</span><
   <div class="mo">
     <button class="mo-x" onclick="closeMo('mc')">×</button>
     <div class="mo-title">Nova Coleção</div>
-    <div class="mo-sub">O nome será o endpoint: <span style="font-family:var(--M);color:var(--G);font-size:12px">/api/{nome}</span></div>
+    <div class="mo-sub">Um token exclusivo é gerado automaticamente para esta coleção.</div>
     <div class="fi">
-      <label class="lb">Nome
-        <div class="tip"><div class="tip-icon">?</div><div class="tip-box">Apenas letras minúsculas, números e underscore. Ex: produtos, usuarios, pedidos_2024</div></div>
-      </label>
-      <input class="ip" id="mc-name" placeholder="ex: produtos, users, pedidos..." oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'').slice(0,50)">
+      <label class="lb">Nome da coleção</label>
+      <input class="ip" id="mc-name" placeholder="ex: produtos, users, pedidos" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9_]/g,'').slice(0,50);updateMcPreview()">
+      <div class="hint">Só minúsculas, números e _. Este será o endpoint da API.</div>
     </div>
     <div class="fi">
-      <label class="lb">Descrição <span style="font-size:10px;font-weight:400;color:var(--MU)">(opcional)</span></label>
-      <input class="ip" id="mc-desc" placeholder="Para que serve esta coleção?">
+      <label class="lb">Descrição <span style="font-weight:400;font-size:10px">(opcional)</span></label>
+      <input class="ip" id="mc-desc" placeholder="Para que serve?">
     </div>
     <div class="fi">
-      <label class="lb">Template inicial
-        <div class="tip"><div class="tip-icon">?</div><div class="tip-box">Pré-preenche a coleção com um registo de exemplo para começar rapidamente.</div></div>
-      </label>
+      <label class="lb">Template inicial</label>
       <select class="ip" id="mc-tmpl">
         <option value="">Vazio</option>
-        <option value="users">Utilizadores</option>
-        <option value="products">Produtos</option>
-        <option value="posts">Posts / Artigos</option>
-        <option value="tasks">Tarefas</option>
-        <option value="contacts">Contactos</option>
-        <option value="orders">Encomendas</option>
+        <option value="users">👤 Utilizadores</option>
+        <option value="products">📦 Produtos</option>
+        <option value="posts">📝 Posts / Artigos</option>
+        <option value="tasks">✅ Tarefas</option>
+        <option value="contacts">📇 Contactos</option>
+        <option value="orders">🛒 Encomendas</option>
       </select>
+    </div>
+    <div id="mc-preview" style="display:none;background:var(--SB);border-radius:10px;padding:12px 14px;margin-top:4px">
+      <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px">URL da API gerado</div>
+      <div style="font-family:var(--M);font-size:10.5px;color:#86efac;word-break:break-all" id="mc-preview-url">—</div>
     </div>
     <div class="ferr" id="mc-err"></div>
     <div class="mo-foot">
       <button class="btn btn-g" onclick="closeMo('mc')">Cancelar</button>
-      <button class="btn btn-p" onclick="createColl()">Criar Coleção</button>
+      <button class="btn btn-p" onclick="createColl()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Criar + Gerar Token
+      </button>
     </div>
   </div>
 </div>
@@ -970,49 +966,78 @@ GET /api/colecao?token=<span class="cs" id="docs-token-example2">apl_xxx</span><
   </div>
 </div>
 
+<!-- Edit Collection Token -->
+<div class="mo-bg" id="mo-mct">
+  <div class="mo">
+    <button class="mo-x" onclick="closeMo('mct')">×</button>
+    <div class="mo-title">Token da Coleção</div>
+    <div class="mo-sub">Coleção: <code style="font-family:var(--M);color:var(--G)" id="mct-coll"></code></div>
+    <div class="fi">
+      <label class="lb">Token vinculado</label>
+      <select class="ip" id="mct-token">
+        <option value="">-- Todos os tokens (padrão) --</option>
+      </select>
+      <div class="hint">Só o token selecionado terá acesso a esta coleção via API.</div>
+    </div>
+    <div id="mct-preview" style="margin-top:10px"></div>
+    <div class="mo-foot">
+      <button class="btn btn-g" onclick="closeMo('mct')">Cancelar</button>
+      <button class="btn btn-p" onclick="saveCollToken()">Guardar</button>
+    </div>
+  </div>
+</div>
+
 <!-- New Token -->
 <div class="mo-bg" id="mo-mt">
-  <div class="mo">
+  <div class="mo wide">
     <button class="mo-x" onclick="closeMo('mt')">×</button>
     <div class="mo-title">Novo Token de API</div>
-    <div class="mo-sub">Tokens são válidos imediatamente. Guarda-o num local seguro.</div>
-    <div class="fi">
-      <label class="lb">Nome</label>
-      <input class="ip" id="mt-name" placeholder="ex: Produção, App Mobile, Dev...">
-    </div>
-    <div class="fi">
-      <label class="lb">Permissões
-        <div class="tip"><div class="tip-icon">?</div><div class="tip-box">Full: GET+POST+PUT+DELETE. Read: só GET. Write: POST+PUT+DELETE sem GET.</div></div>
-      </label>
-      <select class="ip" id="mt-perms">
-        <option value="rw">Leitura + Escrita (full access)</option>
-        <option value="r">Só Leitura (GET)</option>
-        <option value="w">Só Escrita (POST, PUT, DELETE)</option>
-      </select>
-    </div>
-    <div class="fi">
-      <label class="lb">Expiração</label>
-      <select class="ip" id="mt-exp">
-        <option value="never">Nunca expira</option>
-        <option value="30d">30 dias</option>
-        <option value="90d">90 dias</option>
-        <option value="1y">1 ano</option>
-      </select>
-    </div>
-    <div id="mt-result" style="display:none">
-      <div class="div"></div>
-      <div style="font-size:11px;font-weight:700;color:var(--WARN);margin-bottom:7px;display:flex;align-items:center;gap:6px">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
-        Copia este token agora — não será mostrado de novo!
+    <div class="mo-sub">Guarda o token após gerar — não será mostrado novamente.</div>
+    <div class="g2">
+      <div class="fi">
+        <label class="lb">Nome do token</label>
+        <input class="ip" id="mt-name" placeholder="ex: App Mobile, Produção, Dev...">
       </div>
-      <div style="display:flex;align-items:center;gap:8px;background:var(--BG);border:1px solid var(--B3);border-radius:9px;padding:10px 12px">
-        <span style="font-family:var(--M);font-size:11px;color:var(--G);flex:1;word-break:break-all" id="mt-val"></span>
-        <button class="btn btn-p btn-sm" onclick="cpTxt(document.getElementById('mt-val').textContent)">Copiar</button>
+      <div class="fi">
+        <label class="lb">Permissões</label>
+        <select class="ip" id="mt-perms">
+          <option value="rw">🔓 Leitura + Escrita (full access)</option>
+          <option value="r">👁️ Só Leitura (GET)</option>
+          <option value="w">✏️ Só Escrita (POST, PUT, DELETE)</option>
+        </select>
       </div>
     </div>
+    <div class="fi">
+      <label class="lb">Coleções com acesso</label>
+      <div id="mt-colls-list" style="display:flex;flex-wrap:wrap;gap:6px;padding:8px;background:var(--BG);border:1px solid var(--B2);border-radius:8px;min-height:38px">
+        <span style="font-size:12px;color:var(--MU);padding:4px 2px" id="mt-colls-empty">Acesso a todas as coleções</span>
+      </div>
+      <div class="hint">Por defeito o token acede a tudo. Vincula o token a uma coleção específica na página Coleções.</div>
+    </div>
+    <div id="mt-result" style="display:none;margin-top:4px">
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:9px;padding:10px 13px;display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#92400e;margin-bottom:10px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:14px;height:14px;flex-shrink:0;margin-top:1px"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+        <span>Copia este token agora — <strong>não será mostrado novamente!</strong></span>
+      </div>
+      <div style="background:var(--SB);border-radius:9px;padding:12px 14px">
+        <div style="font-size:9px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Token gerado</div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-family:var(--M);font-size:11px;color:#86efac;flex:1;word-break:break-all" id="mt-val"></span>
+          <button class="btn btn-p btn-sm" onclick="cpTxt(document.getElementById('mt-val').textContent)">📋 Copiar</button>
+        </div>
+        <div style="margin-top:10px;display:flex;gap:6px;flex-wrap:wrap">
+          <button class="btn btn-dk btn-xs" onclick="cpTxt('Authorization: Bearer '+document.getElementById('mt-val').textContent)">Copiar como Header</button>
+          <button class="btn btn-dk btn-xs" onclick="cpCurlExample()">Copiar exemplo cURL</button>
+        </div>
+      </div>
+    </div>
+    <div class="ferr" id="mt-err"></div>
     <div class="mo-foot">
       <button class="btn btn-g" id="mt-cancel" onclick="closeMo('mt')">Cancelar</button>
-      <button class="btn btn-p" id="mt-btn" onclick="createToken()">Gerar Token</button>
+      <button class="btn btn-p" id="mt-btn" onclick="createToken()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg>
+        Gerar Token
+      </button>
     </div>
   </div>
 </div>
@@ -1189,9 +1214,31 @@ function toast(msg, type='ok') {
 //  MODALS
 // ════════════════════════════════
 function openMo(id) {
-  if (id==='mt') { document.getElementById('mt-name').value=''; document.getElementById('mt-result').style.display='none'; document.getElementById('mt-btn').style.display='inline-flex'; document.getElementById('mt-cancel').textContent='Cancelar'; }
+  if (id==='mt') {
+    document.getElementById('mt-name').value='';
+    document.getElementById('mt-result').style.display='none';
+    document.getElementById('mt-btn').style.display='inline-flex';
+    document.getElementById('mt-cancel').textContent='Cancelar';
+    // Mostra coleções existentes
+    const colls = Object.keys(S.colls());
+    const cl = document.getElementById('mt-colls-list');
+    const ce = document.getElementById('mt-colls-empty');
+    if (colls.length) {
+      ce.style.display='none';
+      cl.innerHTML = colls.map(c=>`<span style="background:var(--Gd);color:var(--G);font-family:var(--M);font-size:10.5px;padding:3px 8px;border-radius:6px">${c}</span>`).join('');
+    } else {
+      ce.style.display='block';
+      cl.innerHTML = '<span style="font-size:12px;color:var(--MU);padding:4px 2px" id="mt-colls-empty">Acesso a todas as coleções</span>';
+    }
+  }
   if (id==='ms') { const c=S.colls(); const sel=document.getElementById('ms-coll'); sel.innerHTML='<option value="">-- seleciona --</option>'+Object.keys(c).map(n=>`<option value="${n}">${n}</option>`).join(''); document.getElementById('ms-result').style.display='none'; document.getElementById('ms-btn').textContent='Gerar Link'; }
-  if (id==='mc') { document.getElementById('mc-name').value=''; document.getElementById('mc-desc').value=''; document.getElementById('mc-err').classList.remove('show'); }
+  if (id==='mc') {
+    document.getElementById('mc-name').value='';
+    document.getElementById('mc-desc').value='';
+    document.getElementById('mc-err').classList.remove('show');
+    document.getElementById('mc-preview').style.display='none';
+    document.getElementById('mc-tmpl').value='';
+  }
   document.getElementById('mo-'+id).classList.add('open');
   setTimeout(()=>{ const f = document.getElementById('mo-'+id).querySelector('input,textarea,select'); if(f&&f.type!=='hidden') f.focus(); }, 80);
 }
@@ -1383,39 +1430,66 @@ function renderDash() {
 // ════════════════════════════════
 //  COLLECTIONS
 // ════════════════════════════════
+function updateMcPreview() {
+  const name = document.getElementById('mc-name')?.value.trim();
+  const prev = document.getElementById('mc-preview');
+  if (!prev) return;
+  if (name) { prev.style.display='block'; document.getElementById('mc-preview-url').textContent=`${SERVER_URL}/api/${name}?token=apl_<gerado_automaticamente>`; }
+  else prev.style.display='none';
+}
+
 async function createColl() {
   const name = document.getElementById('mc-name').value.trim();
   const desc = document.getElementById('mc-desc').value.trim();
   const tmpl = document.getElementById('mc-tmpl').value;
   if (!name) { setErr('mc','Nome obrigatório'); return; }
-  if (!/^[a-z0-9_]+$/.test(name)) { setErr('mc','Apenas letras minúsculas, números e _'); return; }
+  if (!/^[a-z0-9_]+$/.test(name)) { setErr('mc','Apenas minúsculas, números e _'); return; }
   const c = S.colls();
   if (c[name]) { setErr('mc',`"${name}" já existe`); return; }
-  c[name] = {name, desc, created:Date.now()};
-  S.setColls(c);
-  S.setRecs(name, []);
-  // Se tiver template, envia o registo para o servidor
-  if (tmpl && TMPL[tmpl]) {
-    try {
-      const rec = await apiFetch('/api/'+name, { method:'POST', body: JSON.stringify(TMPL[tmpl]) });
-      S.setRecs(name, [rec]);
-    } catch {}
-  }
-  S.addAct('coll', `Coleção <strong>${name}</strong> criada`);
-  closeMo('mc');
-  renderAll();
-  updateBadges();
-  nav('collections');
-  setTimeout(()=>selectColl(name), 80);
-  toast(`Coleção "${name}" criada!`, 'ok');
+
+  const btn = document.querySelector('#mo-mc .btn-p');
+  if (btn) { btn.disabled=true; btn.textContent='A criar...'; }
+
+  try {
+    // Cria token exclusivo para esta coleção
+    const tk = await apiFetch('/tokens', { method:'POST', body: JSON.stringify({ name: name, perms:'rw' }) });
+
+    // Guarda coleção com token exclusivo
+    c[name] = { name, desc, token: tk.key, created: Date.now() };
+    S.setColls(c); S.setRecs(name, []);
+    const ts = S.tokens(); ts.push(tk); S.setTokens(ts);
+
+    // Template com o token da coleção
+    if (tmpl && TMPL[tmpl]) {
+      try {
+        const saved = App.token; App.token = tk.key;
+        const rec = await apiFetch('/api/'+name, { method:'POST', body: JSON.stringify(TMPL[tmpl]) });
+        S.setRecs(name, [rec]);
+        App.token = saved;
+      } catch {}
+    }
+
+    S.addAct('coll', `Coleção <strong>${name}</strong> + token criados`);
+    closeMo('mc'); renderAll(); updateBadges();
+    nav('collections'); setTimeout(()=>selectColl(name), 80);
+    toast(`✅ "${name}" criada com token exclusivo!`, 'ok');
+  } catch(e) { toast('Erro: '+e.message,'er'); }
+  if (btn) { btn.disabled=false; btn.textContent='Criar + Gerar Token'; }
 }
-function setErr(id, msg) { const el=document.getElementById(id+'-err'); el.textContent=msg; el.classList.add('show'); }
 
 function renderColls() {
   const c=S.colls(), ns=Object.keys(c);
   const sb=document.getElementById('cl-sidebar-list');
   if (!ns.length) { sb.innerHTML='<div style="padding:14px;text-align:center;font-size:12px;color:var(--MU)">Sem coleções ainda</div>'; return; }
-  sb.innerHTML = ns.map(n=>`<div class="cl-item ${App.activeColl===n?'on':''}" onclick="selectColl('${n}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>${n}<span class="cl-item-cnt">${S.recs(n).length}</span></div>`).join('');
+  sb.innerHTML = ns.map(n=>`
+    <div class="cl-item ${App.activeColl===n?'on':''}" onclick="selectColl('${n}')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <div style="flex:1;min-width:0;overflow:hidden">
+        <div style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${n}</div>
+        ${c[n].token?`<div style="font-size:9px;color:var(--G2);margin-top:1px;font-family:var(--M)">🔑 token próprio</div>`:''}
+      </div>
+      <span class="cl-item-cnt">${S.recs(n).length}</span>
+    </div>`).join('');
   if (App.activeColl && c[App.activeColl]) renderRecs(App.activeColl);
 }
 
@@ -1423,42 +1497,63 @@ function selectColl(name) { App.activeColl=name; renderColls(); renderRecs(name)
 
 function renderRecs(coll) {
   const recs = S.recs(coll), cd = S.colls()[coll]||{};
-  const tk = (S.tokens()[0]||{}).key || 'SEU_TOKEN';
+  const tk   = cd.token || _getToken() || 'SEU_TOKEN';
+  const apiUrl = `${SERVER_URL}/api/${coll}`;
   const fset = new Set(); recs.forEach(r=>Object.keys(r).filter(k=>!k.startsWith('_')).forEach(k=>fset.add(k)));
   const fields = [...fset];
   const panel = document.getElementById('cl-panel');
   panel.innerHTML = `
     <div class="cl-panel-hd">
       <span style="font-family:var(--M);font-size:12px;color:var(--G);background:var(--Gd);padding:2px 9px;border-radius:5px">${coll}</span>
-      ${cd.desc?`<h3 style="font-size:13px">${cd.desc}</h3>`:''}
-      <span class="bx bx-gray" style="margin-left:4px">${recs.length} registos</span>
-      <div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn btn-g btn-sm" onclick="exportColl('${coll}')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Exportar JSON
-        </button>
-        <button class="btn btn-g btn-sm" style="color:var(--ERR);border-color:#fecaca" onclick="delColl('${coll}')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
-        </button>
-        <button class="btn btn-p btn-sm" onclick="openAddRec('${coll}')">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          Adicionar
-        </button>
+      ${cd.desc?`<span style="font-size:12.5px;color:var(--T2)">${cd.desc}</span>`:''}
+      <span class="bx bx-gray">${recs.length} registos</span>
+      <div style="margin-left:auto;display:flex;gap:6px">
+        <button class="btn btn-g btn-sm" onclick="exportColl('${coll}')">⬇ Export</button>
+        <button class="btn btn-g btn-sm" style="color:var(--ERR);border-color:#fecaca" onclick="delColl('${coll}')">🗑</button>
+        <button class="btn btn-p btn-sm" onclick="openAddRec('${coll}')">+ Adicionar</button>
       </div>
     </div>
-    <div class="api-bar">
-      <span class="mth m-get">GET</span>
-      <span style="font-size:10px;word-break:break-all">${SERVER_URL}/api/${coll}?token=<span class="g">${tk.slice(0,18)}…</span></span>
-      <button class="btn btn-g" style="padding:2px 8px;font-size:10px" onclick="cpTxt('${SERVER_URL}/api/${coll}?token=${tk}')">Copiar URL</button>
-      <button class="btn btn-g" style="padding:2px 8px;font-size:10px;margin-left:auto" onclick="loadExplorer('${coll}')">Testar →</button>
+
+    <!-- TOKEN DESTA COLEÇÃO -->
+    <div style="background:var(--SB);padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06)">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+        <span style="font-size:10px;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.08em">Token exclusivo</span>
+        ${cd.token?'<span style="font-size:10px;background:rgba(22,163,74,.2);color:var(--G2);padding:1px 7px;border-radius:10px">✓ Gerado automaticamente</span>':''}
+      </div>
+      <div style="display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.25);border-radius:8px;padding:8px 11px;margin-bottom:8px">
+        <span style="font-family:var(--M);font-size:11px;color:#fde68a;flex:1;word-break:break-all">${tk}</span>
+        <button class="btn btn-xs" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:none;flex-shrink:0" onclick="cpTxt('${tk}')">Copiar</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+        <div>
+          <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">URL GET (listar)</div>
+          <div style="display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.2);border-radius:6px;padding:5px 8px">
+            <span style="font-family:var(--M);font-size:9.5px;color:#86efac;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${apiUrl}?token=${tk.slice(0,16)}…</span>
+            <button class="btn btn-xs" style="background:transparent;color:rgba(255,255,255,.4);border:none;padding:1px 4px;flex-shrink:0" onclick="cpTxt('${apiUrl}?token=${tk}')">📋</button>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Header Auth</div>
+          <div style="display:flex;align-items:center;gap:5px;background:rgba(0,0,0,.2);border-radius:6px;padding:5px 8px">
+            <span style="font-family:var(--M);font-size:9.5px;color:#86efac;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Bearer ${tk.slice(0,16)}…</span>
+            <button class="btn btn-xs" style="background:transparent;color:rgba(255,255,255,.4);border:none;padding:1px 4px;flex-shrink:0" onclick="cpTxt('Authorization: Bearer ${tk}')">📋</button>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;gap:5px;margin-top:8px;flex-wrap:wrap">
+        <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('curl ${apiUrl} -H \\'Authorization: Bearer ${tk}\\'')">📋 cURL</button>
+        <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('fetch(\\'${apiUrl}\\', {headers:{\\'Authorization\\':\\'Bearer ${tk}\\'}}).then(r=>r.json())')">📋 JS Fetch</button>
+        <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)" onclick="loadExplorerWithToken('${tk}');loadExplorer('${coll}')">▶ Testar no Explorer</button>
+      </div>
     </div>
+
     <div class="srch">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input placeholder="Pesquisar nos registos..." oninput="searchRecs('${coll}',this.value)" id="srch-${coll}">
+      <input placeholder="Pesquisar registos..." oninput="searchRecs('${coll}',this.value)" id="srch-${coll}">
     </div>
     ${!recs.length
-      ? `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg><h3>Sem registos</h3><p>Clica em "Adicionar" para criar o primeiro.</p></div>`
-      : `<div class="tw" style="border:none;border-radius:0"><table><thead><tr><th>ID</th>${fields.map(f=>`<th>${f}</th>`).join('')}<th>Data</th><th></th></tr></thead><tbody id="tb-${coll}">${recs.map(r=>recRow(r,fields,coll)).join('')}</tbody></table></div>`
+      ? `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg><h3>Sem registos</h3><p>Clica em "+ Adicionar" ou usa a API com o token acima.</p></div>`
+      : `<div class="tw" style="border:none;border-radius:0"><table><thead><tr><th>ID</th>${fields.map(f=>`<th>${f}</th>`).join('')}<th>Criado</th><th></th></tr></thead><tbody id="tb-${coll}">${recs.map(r=>recRow(r,fields,coll)).join('')}</tbody></table></div>`
     }`;
 }
 
@@ -1537,30 +1632,127 @@ function loadExplorer(coll) { document.getElementById('t-url').value=SERVER_URL+
 //  TOKENS
 // ════════════════════════════════
 async function createToken() {
-  const name=document.getElementById('mt-name').value.trim();
-  const perms=document.getElementById('mt-perms').value;
-  if(!name){toast('Dá um nome ao token','er');return;}
-  const btn=document.getElementById('mt-btn'); btn.disabled=true; btn.textContent='A criar...';
+  const name  = document.getElementById('mt-name').value.trim();
+  const perms = document.getElementById('mt-perms').value;
+  if (!name) { toast('Dá um nome ao token','er'); return; }
+  const btn = document.getElementById('mt-btn');
+  btn.disabled = true; btn.textContent = 'A criar...';
   try {
     const tk = await apiFetch('/tokens', { method:'POST', body: JSON.stringify({ name, perms }) });
-    const ts=S.tokens(); ts.push(tk); S.setTokens(ts);
-    S.addAct('token',`Token <strong>${name}</strong> gerado`);
-    document.getElementById('mt-val').textContent=tk.key;
-    document.getElementById('mt-result').style.display='block';
-    document.getElementById('mt-btn').style.display='none';
-    document.getElementById('mt-cancel').textContent='Fechar';
+    const ts = S.tokens(); ts.push(tk); S.setTokens(ts);
+    S.addAct('token', `Token <strong>${name}</strong> gerado`);
+    document.getElementById('mt-val').textContent = tk.key;
+    document.getElementById('mt-result').style.display = 'block';
+    document.getElementById('mt-btn').style.display = 'none';
+    document.getElementById('mt-cancel').textContent = 'Fechar';
     renderTokens(); updateBadges(); syncTesterTokens();
     toast('Token gerado! Copia-o agora.','wa');
   } catch(e) { toast('Erro: '+e.message,'er'); }
-  btn.disabled=false;
+  btn.disabled = false;
+}
+
+function cpCurlExample() {
+  const tk = document.getElementById('mt-val').textContent;
+  const firstColl = Object.keys(S.colls())[0] || 'minha_colecao';
+  cpTxt(`curl ${SERVER_URL}/api/${firstColl} \\\n  -H "Authorization: Bearer ${tk}"`);
+}
+
+function loadExplorerWithToken(key) {
+  nav('explorer');
+  setTimeout(() => {
+    const sel = document.getElementById('t-tk-sel');
+    const inp = document.getElementById('t-tk');
+    if (sel) sel.value = key;
+    if (inp) inp.value = key;
+  }, 100);
 }
 
 function renderTokens() {
-  const ts=S.tokens(), list=document.getElementById('tokens-list');
-  if(!ts.length){list.innerHTML='<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4"/></svg><h3>Sem tokens</h3><p>Cria o primeiro token para fazer requests à API.</p><button class="btn btn-p" onclick="openMo(\'mt\')">Criar token</button></div>';return;}
-  const pl={rw:'Leitura+Escrita',r:'Só Leitura',w:'Só Escrita'};
-  const pb={rw:'bx-g',r:'bx-b',w:'bx-o'};
-  list.innerHTML=ts.map(t=>`<div class="tk-row"><div class="tk-dot"></div><div class="tk-info"><div class="tk-name">${t.name}</div><div class="tk-key" onclick="cpTxt('${t.key}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>${t.key.slice(0,22)}…${t.key.slice(-4)}</div></div><div class="tk-meta"><div>${new Date(t.created).toLocaleDateString('pt-PT')}</div></div><span class="bx ${pb[t.perms]||'bx-gray'}">${pl[t.perms]||t.perms}</span><button class="btn btn-g btn-sm" onclick="cpTxt('${t.key}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copiar</button><button class="btn btn-d btn-sm" onclick="revokeToken('${t.key}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>Revogar</button></div>`).join('');
+  const colls = S.colls();
+  const list  = document.getElementById('tokens-list');
+  const ns    = Object.keys(colls);
+
+  if (!ns.length) {
+    list.innerHTML = `<div class="empty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <h3>Sem coleções ainda</h3>
+      <p>Cria uma coleção — o token é gerado automaticamente.</p>
+      <button class="btn btn-p" onclick="openMo('mc')">Criar primeira coleção</button>
+    </div>`;
+    return;
+  }
+
+  list.innerHTML = `
+    <div class="info-banner" style="margin-bottom:14px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Cada coleção tem o seu próprio token exclusivo gerado automaticamente. Usa o token da coleção que precisas.</p>
+    </div>
+    ${ns.map(n => {
+      const cd = colls[n];
+      const tk = cd.token || '';
+      const apiUrl = `${SERVER_URL}/api/${n}`;
+      if (!tk) return `<div class="card" style="margin-bottom:10px;opacity:.6">
+        <div style="display:flex;align-items:center;gap:9px">
+          <span style="font-family:var(--M);font-size:13px;font-weight:700;color:var(--G)">${n}</span>
+          <span style="font-size:12px;color:var(--MU)">Sem token — coleção antiga</span>
+          <button class="btn btn-p btn-sm" style="margin-left:auto" onclick="regenerateToken('${n}')">Gerar Token</button>
+        </div>
+      </div>`;
+      return `<div style="background:var(--W);border:1px solid var(--B);border-radius:14px;margin-bottom:12px;overflow:hidden">
+        <!-- Header da coleção -->
+        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--B)">
+          <div style="width:36px;height:36px;background:var(--Gd);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:16px;height:16px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          </div>
+          <div style="flex:1">
+            <div style="font-size:15px;font-weight:700;color:var(--T)">${n}</div>
+            ${cd.desc?`<div style="font-size:12px;color:var(--MU)">${cd.desc}</div>`:''}
+          </div>
+          <span style="font-size:10px;background:var(--Gd);color:var(--G);padding:2px 8px;border-radius:10px;font-weight:600">${S.recs(n).length} registos</span>
+          <button class="btn btn-g btn-sm" onclick="nav('collections');setTimeout(()=>selectColl('${n}'),100)">Ver dados →</button>
+        </div>
+
+        <!-- Token -->
+        <div style="background:var(--SB);padding:14px 16px">
+          <div style="font-size:9.5px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Token exclusivo desta coleção</div>
+          <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.3);border-radius:8px;padding:9px 12px;margin-bottom:10px">
+            <span style="font-family:var(--M);font-size:11.5px;color:#fde68a;flex:1;word-break:break-all">${tk}</span>
+            <button class="btn btn-xs" style="background:rgba(255,255,255,.1);color:#fff;border:none;flex-shrink:0;padding:4px 10px" onclick="cpTxt('${tk}')">📋 Copiar</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
+            <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:10px 11px">
+              <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">URL Completa</div>
+              <div style="font-family:var(--M);font-size:9.5px;color:#86efac;word-break:break-all;margin-bottom:6px">${apiUrl}?token=${tk.slice(0,20)}…</div>
+              <button class="btn btn-xs" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:none" onclick="cpTxt('${apiUrl}?token=${tk}')">📋 Copiar URL</button>
+            </div>
+            <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:10px 11px">
+              <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Header Auth</div>
+              <div style="font-family:var(--M);font-size:9.5px;color:#86efac;margin-bottom:6px">Authorization: Bearer ${tk.slice(0,18)}…</div>
+              <button class="btn btn-xs" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:none" onclick="cpTxt('Authorization: Bearer ${tk}')">📋 Copiar Header</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('curl ${apiUrl} -H \\'Authorization: Bearer ${tk}\\'')">📋 cURL GET</button>
+            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('curl -X POST ${apiUrl} -H \\'Authorization: Bearer ${tk}\\' -H \\'Content-Type: application/json\\' -d \\'{}\\'')">📋 cURL POST</button>
+            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)" onclick="cpJsExample('${n}','${tk}')">📋 JavaScript</button>
+            <button class="btn btn-xs" style="background:rgba(22,163,74,.2);color:var(--G2);border:1px solid rgba(22,163,74,.3);margin-left:auto" onclick="loadExplorerWithToken('${tk}');loadExplorer('${n}')">▶ Testar</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('')}`;
+}
+
+function cpJsExample(coll, tk) {
+  cpTxt(`const BASE = '${SERVER_URL}/api';\nconst TOKEN = '${tk}';\nconst H = { 'Authorization': \`Bearer \${TOKEN}\`, 'Content-Type': 'application/json' };\n\n// Listar\nconst { data } = await (await fetch(\`\${BASE}/${coll}\`, { headers: H })).json();\n\n// Criar\nconst novo = await (await fetch(\`\${BASE}/${coll}\`, { method:'POST', headers: H, body: JSON.stringify({campo:'valor'}) })).json();\n\n// Atualizar\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`, { method:'PATCH', headers: H, body: JSON.stringify({campo:'novo'}) });\n\n// Eliminar\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`, { method:'DELETE', headers: H });`);
+}
+
+async function regenerateToken(coll) {
+  try {
+    const tk = await apiFetch('/tokens', { method:'POST', body: JSON.stringify({ name: coll, perms:'rw' }) });
+    const c = S.colls(); c[coll].token = tk.key; S.setColls(c);
+    const ts = S.tokens(); ts.push(tk); S.setTokens(ts);
+    renderTokens(); toast(`Token gerado para "${coll}"!`, 'ok');
+  } catch(e) { toast('Erro: '+e.message,'er'); }
 }
 
 async function revokeToken(key) {
