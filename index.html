@@ -428,7 +428,6 @@ tbody tr:hover td{background:var(--BG)}
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{animation:spin .6s linear infinite}
-@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 </style>
 </head>
 <body>
@@ -468,26 +467,9 @@ tbody tr:hover td{background:var(--BG)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
       Criar conta grátis
     </button>
-    <div id="server-status" style="display:flex;align-items:center;gap:7px;justify-content:center;margin-top:12px;font-size:12px;color:var(--MU);flex-wrap:wrap">
-      <div id="server-dot" style="width:8px;height:8px;border-radius:50%;background:#d97706;flex-shrink:0;animation:pulse-dot 1s ease-in-out infinite"></div>
-      <span id="server-txt">A verificar ligação ao servidor…</span>
-      <button id="server-retry" onclick="checkServer()" style="display:none;background:none;border:1px solid var(--B2);border-radius:5px;padding:2px 8px;font-size:11px;cursor:pointer;color:var(--MU);font-family:var(--F)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px;vertical-align:-1px;margin-right:3px"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
-        Tentar novamente
-      </button>
-    </div>
-    <div id="wake-area" style="display:none;margin-top:10px;background:#fefce8;border:1px solid #fde68a;border-radius:9px;padding:10px 13px;font-size:12px;color:#92400e;text-align:center">
-      <p style="margin-bottom:7px">O servidor Render pode estar adormecido (free tier). Clica para o acordar — demora ~30s.</p>
-      <button id="wake-btn" onclick="wakeServer()" style="background:#d97706;color:#fff;border:none;border-radius:7px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--F);display:inline-flex;align-items:center;gap:5px">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
-        Acordar servidor
-      </button>
-      <div id="wake-prog" style="display:none;margin-top:8px">
-        <div style="height:3px;background:#fde68a;border-radius:2px;overflow:hidden">
-          <div id="wake-prog-bar" style="height:100%;background:#d97706;border-radius:2px;width:0%;transition:width .5s"></div>
-        </div>
-        <div id="wake-countdown" style="font-size:11px;margin-top:4px;color:#92400e"></div>
-      </div>
+    <div id="server-status" style="display:flex;align-items:center;gap:7px;justify-content:center;margin-top:12px;font-size:12px;color:var(--MU)">
+      <div id="server-dot" style="width:8px;height:8px;border-radius:50%;background:#d97706;flex-shrink:0"></div>
+      <span id="server-txt">A verificar ligação ao servidor...</span>
     </div>
   </div>
 </div>
@@ -1512,7 +1494,7 @@ tbody tr:hover td{background:var(--BG)}
 // ════════════════════════════════
 //  CONFIG — URL do servidor real
 // ════════════════════════════════
-const SERVER_URL = 'https://meusiteapi-m958.onrender.com';
+const SERVER_URL = 'https://apply-render.onrender.com';
 function getBase() { return SERVER_URL; }
 function setBase(u) {}
 
@@ -2902,130 +2884,30 @@ delete('${C}',novo['_id'])`);
   }
 }
 
-const DEPLOY_HOOK = 'https://api.render.com/deploy/srv-d6uqag450q8c7398f68g?key=bS7WLCrRclA';
-
-function fetchWithTimeout(url, ms) {
-  return new Promise((resolve, reject) => {
-    const ctrl = new AbortController();
-    const id = setTimeout(() => { ctrl.abort(); reject(new Error('timeout')); }, ms);
-    fetch(url, { signal: ctrl.signal, mode: 'no-cors' })
-      .then(r => { clearTimeout(id); resolve(r); })
-      .catch(e => { clearTimeout(id); reject(e); });
-  });
-}
-
 async function checkServer() {
   const dot = document.getElementById('server-dot');
   const txt = document.getElementById('server-txt');
   const btn = document.getElementById('a-btn');
-  const retryBtn = document.getElementById('server-retry');
-  const wakeArea = document.getElementById('wake-area');
-
-  dot.style.background = '#d97706';
-  dot.style.animation = 'pulse-dot 1s ease-in-out infinite';
-  txt.textContent = 'A verificar ligação ao servidor…';
-  btn.disabled = true;
-  if (retryBtn) retryBtn.style.display = 'none';
-  if (wakeArea) wakeArea.style.display = 'none';
-
-  let ok = false;
-  const endpoints = [SERVER_URL + '/ping', SERVER_URL + '/health', SERVER_URL];
-
-  for (const url of endpoints) {
-    try {
-      // Tenta com CORS normal primeiro
-      const ctrl = new AbortController();
-      const id = setTimeout(() => ctrl.abort(), 9000);
-      const res = await fetch(url, { signal: ctrl.signal }).catch(() => null);
-      clearTimeout(id);
-      if (res !== null) { ok = true; break; }
-    } catch {}
-    try {
-      // Fallback: no-cors (não lê o body mas confirma que o servidor respondeu)
-      await fetchWithTimeout(url, 9000);
-      ok = true; break;
-    } catch {}
-  }
-
-  dot.style.animation = 'none';
-  if (ok) {
+  try {
+    const res = await fetch(SERVER_URL + '/ping', { signal: AbortSignal.timeout(8000) });
     dot.style.background = '#16a34a';
+    dot.style.animation = 'none';
     txt.textContent = 'Servidor online ✓';
     btn.disabled = false;
-  } else {
-    dot.style.background = '#dc2626';
-    txt.textContent = 'Servidor sem resposta';
-    btn.disabled = false;
-    if (retryBtn) retryBtn.style.display = 'inline-flex';
-    if (wakeArea) wakeArea.style.display = 'block';
-  }
-}
-
-async function wakeServer() {
-  const btn = document.getElementById('wake-btn');
-  const prog = document.getElementById('wake-prog');
-  const bar = document.getElementById('wake-prog-bar');
-  const countdown = document.getElementById('wake-countdown');
-  const dot = document.getElementById('server-dot');
-  const txt = document.getElementById('server-txt');
-
-  btn.disabled = true;
-  btn.textContent = 'A acordar…';
-  prog.style.display = 'block';
-
-  // Dispara o deploy hook
-  try {
-    await fetch(DEPLOY_HOOK, { method: 'POST', mode: 'no-cors' });
-  } catch {}
-
-  // Contagem regressiva de 40s enquanto espera o servidor acordar
-  let elapsed = 0;
-  const total = 40;
-  dot.style.background = '#d97706';
-  dot.style.animation = 'pulse-dot 1s ease-in-out infinite';
-
-  const tick = setInterval(async () => {
-    elapsed++;
-    const pct = Math.min((elapsed / total) * 100, 95);
-    bar.style.width = pct + '%';
-    countdown.textContent = `A aguardar resposta… ${total - elapsed}s`;
-
-    if (elapsed >= total) {
-      clearInterval(tick);
-      bar.style.width = '100%';
-      countdown.textContent = 'A verificar ligação…';
-      btn.disabled = false;
-      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg> Acordar servidor';
-      prog.style.display = 'none';
-      dot.style.animation = 'none';
-      await checkServer();
-    }
-  }, 1000);
-
-  // Enquanto conta, vai tentando a cada 5s
-  const checkInterval = setInterval(async () => {
+  } catch {
     try {
-      const ctrl = new AbortController();
-      const id = setTimeout(() => ctrl.abort(), 4000);
-      const res = await fetch(SERVER_URL + '/ping', { signal: ctrl.signal });
-      clearTimeout(id);
-      if (res) {
-        clearInterval(checkInterval);
-        clearInterval(tick);
-        bar.style.width = '100%';
-        countdown.textContent = '';
-        prog.style.display = 'none';
-        btn.disabled = false;
-        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg> Acordar servidor';
-        dot.style.animation = 'none';
-        dot.style.background = '#16a34a';
-        txt.textContent = 'Servidor online ✓';
-        document.getElementById('a-btn').disabled = false;
-        document.getElementById('wake-area').style.display = 'none';
-        document.getElementById('server-retry').style.display = 'none';
-      }
-    } catch {}
-  }, 5000);
+      const res2 = await fetch(SERVER_URL, { signal: AbortSignal.timeout(10000) });
+      dot.style.background = '#16a34a';
+      dot.style.animation = 'none';
+      txt.textContent = 'Servidor online ✓';
+      btn.disabled = false;
+    } catch {
+      dot.style.background = '#dc2626';
+      dot.style.animation = 'none';
+      txt.textContent = 'Servidor offline — tenta mais tarde';
+      btn.disabled = true;
+    }
+  }
 }
 
 (async function init() {
