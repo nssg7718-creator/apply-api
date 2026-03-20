@@ -132,6 +132,75 @@ textarea.ip{resize:vertical;min-height:88px;line-height:1.6}
 /* ── DIVIDER ── */
 .div{height:1px;background:var(--B);margin:16px 0}
 
+/* ── RECORD MODAL ENHANCEMENTS ── */
+.mr-tabs{display:flex;gap:4px;background:var(--BG);padding:4px;border-radius:9px;margin-bottom:14px}
+.mr-tab{flex:1;padding:6px 10px;border-radius:7px;font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:all .15s;color:var(--MU);border:none;background:transparent;font-family:var(--F)}
+.mr-tab.on{background:var(--W);color:var(--T);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.smart-field{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.sf-row{display:grid;grid-template-columns:1fr;gap:6px}
+.sf-label{font-size:11px;font-weight:700;color:var(--MU);text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:5px;margin-bottom:3px}
+.sf-type-badge{font-size:9px;background:var(--Gd);color:var(--G);padding:1px 5px;border-radius:4px;font-weight:600;text-transform:none;letter-spacing:0}
+
+/* ── FILE DROP ZONE ── */
+.dropzone{border:2px dashed var(--B2);border-radius:10px;padding:18px;text-align:center;cursor:pointer;transition:all .2s;background:var(--BG);position:relative}
+.dropzone:hover,.dropzone.drag{border-color:var(--G);background:var(--Gg2)}
+.dropzone input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.dropzone-ico{width:32px;height:32px;background:var(--Gd);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;color:var(--G)}
+.dropzone-ico svg{width:16px;height:16px}
+.dz-label{font-size:12.5px;font-weight:600;color:var(--T2);margin-bottom:2px}
+.dz-hint{font-size:11px;color:var(--MU)}
+.attach-list{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.attach-item{display:flex;align-items:center;gap:8px;padding:7px 10px;background:var(--W);border:1px solid var(--B2);border-radius:8px}
+.attach-thumb{width:34px;height:34px;border-radius:6px;object-fit:cover;background:var(--BG);flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.attach-thumb img{width:34px;height:34px;border-radius:6px;object-fit:cover}
+.attach-thumb svg{width:16px;height:16px;color:var(--MU)}
+.attach-name{flex:1;font-size:12px;font-weight:600;color:var(--T2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.attach-size{font-size:10.5px;color:var(--MU)}
+.attach-rm{background:none;border:none;cursor:pointer;color:var(--ERR);padding:3px;border-radius:5px;opacity:.6;transition:opacity .15s}
+.attach-rm:hover{opacity:1}
+.attach-rm svg{width:13px;height:13px}
+.attach-key{font-size:10px;background:var(--BG);border:1px solid var(--B2);border-radius:5px;padding:2px 6px;font-family:var(--M);color:var(--MU);cursor:pointer;white-space:nowrap}
+.attach-key:focus{outline:1px solid var(--G)}
+
+/* ── RECORD CARDS ── */
+.rec-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;padding:14px}
+.rec-card{background:var(--W);border:1px solid var(--B);border-radius:12px;overflow:hidden;transition:all .18s;cursor:default}
+.rec-card:hover{border-color:var(--G);box-shadow:0 0 0 3px var(--Gg),0 4px 14px rgba(0,0,0,.06);transform:translateY(-1px)}
+.rec-card-img{width:100%;height:130px;object-fit:cover;background:var(--BG);display:block}
+.rec-card-img-placeholder{width:100%;height:100px;display:flex;align-items:center;justify-content:center;background:var(--BG);border-bottom:1px solid var(--B)}
+.rec-card-img-placeholder svg{width:28px;height:28px;opacity:.2}
+.rec-card-body{padding:10px 12px}
+.rec-card-id{font-family:var(--M);font-size:9px;color:var(--MU2);margin-bottom:4px}
+.rec-card-field{display:flex;gap:5px;font-size:11.5px;margin-bottom:3px;overflow:hidden}
+.rec-card-field-k{font-weight:700;color:var(--MU);white-space:nowrap;flex-shrink:0}
+.rec-card-field-v{color:var(--T2);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rec-card-foot{display:flex;gap:4px;padding:8px 12px;border-top:1px solid var(--B);background:var(--BG)}
+
+/* ── VIEW TOGGLE ── */
+.view-toggle{display:flex;background:var(--BG);border:1px solid var(--B2);border-radius:7px;overflow:hidden}
+.vt-btn{padding:5px 9px;font-size:11px;cursor:pointer;background:none;border:none;color:var(--MU);transition:all .15s;font-family:var(--F);display:flex;align-items:center;gap:4px}
+.vt-btn.on{background:var(--W);color:var(--T);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.vt-btn svg{width:12px;height:12px}
+
+/* ── INLINE IMG in TABLE ── */
+.td-img{width:28px;height:28px;border-radius:5px;object-fit:cover;display:block}
+.td-doc{display:inline-flex;align-items:center;gap:3px;font-size:10px;background:var(--BG);border:1px solid var(--B2);border-radius:5px;padding:2px 6px;color:var(--MU);text-decoration:none}
+.td-doc svg{width:10px;height:10px}
+
+/* ── EDIT RECORD MODAL ── */
+.edit-field-row{display:flex;gap:6px;align-items:flex-start;margin-bottom:8px}
+.edit-field-key{font-family:var(--M);font-size:11px;font-weight:600;color:var(--MU);padding:9px 10px;background:var(--BG);border:1px solid var(--B2);border-radius:7px;min-width:90px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.edit-field-val{flex:1}
+
+/* ── IMPROVED COLLECTION HEADER ── */
+.cl-panel-hd{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--B);background:var(--W);flex-wrap:wrap}
+.coll-stat-pill{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;background:var(--Gd);color:var(--G)}
+
+/* ── UPLOAD PROGRESS ── */
+.upload-prog{height:3px;background:var(--B);border-radius:2px;overflow:hidden;margin-top:6px;display:none}
+.upload-prog.show{display:block}
+.upload-prog-bar{height:100%;background:var(--G);border-radius:2px;transition:width .3s;width:0%}
+
 /* ── EMPTY ── */
 .empty{text-align:center;padding:48px 20px;color:var(--MU)}
 .empty svg{width:40px;height:40px;margin:0 auto 14px;display:block;opacity:.28}
@@ -359,6 +428,7 @@ tbody tr:hover td{background:var(--BG)}
 }
 @keyframes spin{to{transform:rotate(360deg)}}
 .spin{animation:spin .6s linear infinite}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
 </style>
 </head>
 <body>
@@ -398,9 +468,26 @@ tbody tr:hover td{background:var(--BG)}
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
       Criar conta grátis
     </button>
-    <div id="server-status" style="display:flex;align-items:center;gap:7px;justify-content:center;margin-top:12px;font-size:12px;color:var(--MU)">
-      <div id="server-dot" style="width:8px;height:8px;border-radius:50%;background:#d97706;flex-shrink:0"></div>
-      <span id="server-txt">A verificar ligação ao servidor...</span>
+    <div id="server-status" style="display:flex;align-items:center;gap:7px;justify-content:center;margin-top:12px;font-size:12px;color:var(--MU);flex-wrap:wrap">
+      <div id="server-dot" style="width:8px;height:8px;border-radius:50%;background:#d97706;flex-shrink:0;animation:pulse-dot 1s ease-in-out infinite"></div>
+      <span id="server-txt">A verificar ligação ao servidor…</span>
+      <button id="server-retry" onclick="checkServer()" style="display:none;background:none;border:1px solid var(--B2);border-radius:5px;padding:2px 8px;font-size:11px;cursor:pointer;color:var(--MU);font-family:var(--F)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px;vertical-align:-1px;margin-right:3px"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+        Tentar novamente
+      </button>
+    </div>
+    <div id="wake-area" style="display:none;margin-top:10px;background:#fefce8;border:1px solid #fde68a;border-radius:9px;padding:10px 13px;font-size:12px;color:#92400e;text-align:center">
+      <p style="margin-bottom:7px">O servidor Render pode estar adormecido (free tier). Clica para o acordar — demora ~30s.</p>
+      <button id="wake-btn" onclick="wakeServer()" style="background:#d97706;color:#fff;border:none;border-radius:7px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:var(--F);display:inline-flex;align-items:center;gap:5px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg>
+        Acordar servidor
+      </button>
+      <div id="wake-prog" style="display:none;margin-top:8px">
+        <div style="height:3px;background:#fde68a;border-radius:2px;overflow:hidden">
+          <div id="wake-prog-bar" style="height:100%;background:#d97706;border-radius:2px;width:0%;transition:width .5s"></div>
+        </div>
+        <div id="wake-countdown" style="font-size:11px;margin-top:4px;color:#92400e"></div>
+      </div>
     </div>
   </div>
 </div>
@@ -468,7 +555,7 @@ tbody tr:hover td{background:var(--BG)}
         <div class="uc-name" id="u-name">Utilizador</div>
         <div class="uc-plan" id="u-plan">Plano Grátis</div>
       </div>
-      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" style="width:12px;height:12px;flex-shrink:0"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83"/></svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="2" style="width:12px;height:12px;flex-shrink:0"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
     </div>
   </div>
 </aside>
@@ -477,10 +564,14 @@ tbody tr:hover td{background:var(--BG)}
   <div class="tb">
     <span class="tb-title" id="tb-title">Dashboard</span>
     <div class="tb-right">
-      <div style="font-size:11px;color:var(--MU);display:flex;align-items:center;gap:5px;background:var(--BG);border:1px solid var(--B2);border-radius:6px;padding:4px 9px;cursor:pointer" onclick="nav('docs')">
+      <button class="btn btn-g btn-sm" onclick="nav('docs')" style="gap:5px">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         Ajuda
-      </div>
+      </button>
+      <button class="btn btn-p btn-sm" onclick="openMo('mc')" style="gap:5px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:11px;height:11px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nova Coleção
+      </button>
       <span class="bx bx-o" id="tb-mode" style="display:none">Demo</span>
     </div>
   </div>
@@ -507,10 +598,42 @@ tbody tr:hover td{background:var(--BG)}
       </div>
 
       <div class="g4" style="margin-bottom:16px">
-        <div class="stat"><div class="stat-v" id="st-c">0</div><div class="stat-l">Coleções</div></div>
-        <div class="stat"><div class="stat-v" id="st-r">0</div><div class="stat-l">Registos</div></div>
-        <div class="stat"><div class="stat-v" id="st-t">0</div><div class="stat-l">Tokens</div></div>
-        <div class="stat"><div class="stat-v" id="st-files">0</div><div class="stat-l">Ficheiros</div></div>
+        <div class="stat">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div style="width:28px;height:28px;background:var(--Gd);border-radius:7px;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:13px;height:13px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="stat-l">Coleções</div>
+          </div>
+          <div class="stat-v" id="st-c">0</div>
+        </div>
+        <div class="stat">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div style="width:28px;height:28px;background:var(--Gd);border-radius:7px;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:13px;height:13px"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div class="stat-l">Registos</div>
+          </div>
+          <div class="stat-v" id="st-r">0</div>
+        </div>
+        <div class="stat">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div style="width:28px;height:28px;background:var(--Gd);border-radius:7px;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:13px;height:13px"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+            </div>
+            <div class="stat-l">Tokens</div>
+          </div>
+          <div class="stat-v" id="st-t">0</div>
+        </div>
+        <div class="stat">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div style="width:28px;height:28px;background:var(--Gd);border-radius:7px;display:flex;align-items:center;justify-content:center">
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:13px;height:13px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            </div>
+            <div class="stat-l">Ficheiros</div>
+          </div>
+          <div class="stat-v" id="st-files">0</div>
+        </div>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -715,68 +838,96 @@ tbody tr:hover td{background:var(--BG)}
 
     <!-- ══════ EXPLORER ══════ -->
     <div class="pg" id="pg-explorer">
-      <div style="margin-bottom:18px">
+      <div style="margin-bottom:14px">
         <h1 style="font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px">API Explorer</h1>
-        <p style="font-size:13px;color:var(--MU)">Testa qualquer endpoint em tempo real. Os dados são guardados de verdade.</p>
+        <p style="font-size:13px;color:var(--MU)">Testa qualquer endpoint em tempo real — dados reais no servidor</p>
       </div>
       <div class="ex-layout">
+        <!-- Endpoints list -->
         <div class="ep-list" id="ep-list">
-          <div style="padding:14px;font-size:12px;color:var(--MU)">Cria uma coleção para ver os endpoints.</div>
+          <div style="padding:12px;font-size:12px;color:var(--MU)">Cria uma coleção para ver os endpoints.</div>
         </div>
+        <!-- Tester -->
         <div class="tester">
-          <div class="tester-tb">
-            <select class="ip ip-sm ip-mo" id="t-method" style="width:80px" onchange="tBodyToggle()">
+          <div class="tester-tb" style="gap:5px">
+            <select class="ip ip-sm ip-mo" id="t-method" style="width:82px;flex-shrink:0" onchange="tBodyToggle()">
               <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option>
             </select>
-            <input class="ip ip-sm ip-mo" id="t-url" value="" style="flex:1;min-width:120px" placeholder="https://meusiteapi-m958.onrender.com/api/colecao">
-            <button class="btn btn-p btn-sm" onclick="runTest()" id="run-btn">
+            <input class="ip ip-sm ip-mo" id="t-url" style="flex:1;min-width:80px" placeholder="URL do endpoint...">
+            <button class="btn btn-p btn-sm" onclick="runTest()" id="run-btn" style="flex-shrink:0">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               Run
             </button>
           </div>
           <div class="tester-body">
             <div class="t-tabs">
-              <div class="t-tab on" onclick="tTab('p',this)">Params</div>
-              <div class="t-tab" onclick="tTab('h',this)">Headers</div>
-              <div class="t-tab" onclick="tTab('b',this)">Body</div>
+              <div class="t-tab on" onclick="tTab('auth',this)">Auth</div>
+              <div class="t-tab" onclick="tTab('params',this)">Params</div>
+              <div class="t-tab" onclick="tTab('body',this)">Body</div>
+              <div class="t-tab" onclick="tTab('hdrs',this)">Headers</div>
             </div>
-            <div class="t-panel on" id="t-p">
+
+            <!-- Auth -->
+            <div class="t-panel on" id="t-auth">
               <div class="fi">
-                <label class="lb">Token de autenticação
-                  <div class="tip"><div class="tip-icon">?</div><div class="tip-box">Seleciona um dos teus tokens ou cola manualmente. Será enviado como Bearer header.</div></div>
-                </label>
-                <div class="ip-row">
-                  <select class="ip ip-sm ip-mo" id="t-tk-sel" onchange="syncToken()" style="max-width:160px">
-                    <option value="">-- seleciona --</option>
-                  </select>
-                  <input class="ip ip-sm ip-mo" id="t-tk" placeholder="apl_...">
+                <label class="lb">Token de autenticação</label>
+                <select class="ip ip-sm ip-mo" id="t-tk-sel" onchange="syncToken()" style="margin-bottom:6px">
+                  <option value="">-- seleciona token --</option>
+                </select>
+                <div style="display:flex;align-items:center;gap:6px">
+                  <input class="ip ip-sm ip-mo" id="t-tk" placeholder="apl_..." style="flex:1">
+                  <button class="btn btn-g btn-xs" onclick="autoFillToken()">Auto</button>
                 </div>
-              </div>
-              <div class="fi">
-                <label class="lb">Query params extras <span style="font-weight:400;font-size:10px">(key=val&key2=val2)</span></label>
-                <input class="ip ip-sm ip-mo" id="t-qp" placeholder="limit=10&offset=0">
+                <div class="hint">O token é enviado como <code style="font-family:var(--M);font-size:10px">Authorization: Bearer ...</code></div>
               </div>
             </div>
-            <div class="t-panel" id="t-h">
+
+            <!-- Params -->
+            <div class="t-panel" id="t-params">
               <div class="fi">
-                <label class="lb">Headers extras (JSON)</label>
-                <textarea class="ip ip-sm ip-mo" id="t-headers" style="min-height:65px">{"Content-Type": "application/json"}</textarea>
+                <label class="lb">Query Params</label>
+                <div id="t-params-list" style="display:flex;flex-direction:column;gap:5px;margin-bottom:7px"></div>
+                <button class="btn btn-g btn-xs" onclick="addParam()">+ Adicionar param</button>
+              </div>
+              <div class="fi" style="margin-top:8px">
+                <label class="lb">Filtro rápido (campo=valor)</label>
+                <input class="ip ip-sm ip-mo" id="t-qp" placeholder="ex: status=ativo&_limit=10">
+                <div class="hint">_limit, _offset, _sort, _order — ou campo=valor para filtrar</div>
               </div>
             </div>
-            <div class="t-panel" id="t-b">
+
+            <!-- Body -->
+            <div class="t-panel" id="t-body-panel">
               <div class="fi">
-                <label class="lb">Body (JSON)</label>
-                <textarea class="ip ip-mo" id="t-body" style="min-height:90px">{\n  "campo": "valor",\n  "numero": 42\n}</textarea>
+                <div style="display:flex;align-items:center;gap:7px;margin-bottom:6px">
+                  <label class="lb" style="margin:0">Body (JSON)</label>
+                  <button class="btn btn-g btn-xs" onclick="formatBody()">Formatar</button>
+                  <button class="btn btn-g btn-xs" onclick="clearBody()">Limpar</button>
+                </div>
+                <textarea class="ip ip-mo" id="t-body" style="min-height:100px;font-size:11.5px">{\n  "campo": "valor"\n}</textarea>
               </div>
             </div>
-            <div class="div"></div>
-            <div class="rb">
-              <div class="rb-st" id="rb-st">
-                <span class="rb-code" id="rb-code"></span>
-                <span style="font-family:var(--M);font-size:11px;color:rgba(255,255,255,.35)" id="rb-stxt"></span>
-                <span class="rb-t" id="rb-time"></span>
+
+            <!-- Headers -->
+            <div class="t-panel" id="t-hdrs">
+              <div class="fi">
+                <label class="lb">Headers extra (JSON)</label>
+                <textarea class="ip ip-sm ip-mo" id="t-headers" style="min-height:60px">{"Content-Type": "application/json"}</textarea>
+                <div class="hint">Authorization é adicionado automaticamente pelo token acima</div>
               </div>
-              <div class="rb-body emp" id="rb-body">// Clica em Run para executar um request...</div>
+            </div>
+
+            <!-- Response -->
+            <div style="margin-top:10px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
+                <span style="font-size:10.5px;font-weight:700;color:var(--MU);text-transform:uppercase;letter-spacing:.06em">Resposta</span>
+                <span id="rb-status-badge" style="display:none;font-family:var(--M);font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px"></span>
+                <span id="rb-time" style="font-size:10.5px;color:var(--MU2);margin-left:auto"></span>
+                <button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('rb-body').textContent)" style="display:none" id="rb-copy">Copiar</button>
+              </div>
+              <div class="rb">
+                <div class="rb-body emp" id="rb-body">// Clica em Run para executar...</div>
+              </div>
             </div>
           </div>
         </div>
@@ -821,54 +972,250 @@ tbody tr:hover td{background:var(--BG)}
 
     <!-- ══════ DOCS ══════ -->
     <div class="pg" id="pg-docs">
-      <div style="margin-bottom:18px">
+      <div style="margin-bottom:16px">
         <h1 style="font-size:21px;font-weight:800;letter-spacing:-.02em;margin-bottom:3px">Documentação</h1>
-        <p style="font-size:13px;color:var(--MU)">Usa a tua API em qualquer app, linguagem ou dispositivo.</p>
+        <p style="font-size:13px;color:var(--MU)">Setup completo — dados, imagens, documentos, texto, leitura e escrita.</p>
       </div>
-      <div class="g2" style="margin-bottom:14px">
-        <div class="card">
-          <div class="card-hd"><h2>Base URL</h2></div>
-          <div style="display:flex;align-items:center;gap:7px;background:var(--BG);border:1px solid var(--B2);border-radius:8px;padding:9px 11px">
-            <span style="font-family:var(--M);font-size:11.5px;color:var(--G);flex:1;word-break:break-all" id="docs-base-url">—</span>
-            <button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('docs-base-url').textContent)">Copiar</button>
-          </div>
-        </div>
-        <div class="card">
-          <div class="card-hd"><h2>Autenticação</h2></div>
-          <div class="cb"><div class="cb-body" style="font-size:11px"><span class="co"># Header (recomendado)</span>
-Authorization: Bearer <span class="cs" id="docs-token-example">apl_xxx</span>
 
-<span class="co"># Ou query param</span>
-GET /api/colecao?token=<span class="cs" id="docs-token-example2">apl_xxx</span></div></div>
-        </div>
+      <!-- Tab nav -->
+      <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px;background:var(--BG);padding:4px;border-radius:10px;border:1px solid var(--B)">
+        <button class="btn btn-p btn-sm" id="dtab-setup"    onclick="showDTab('setup')">🚀 Setup</button>
+        <button class="btn btn-g btn-sm" id="dtab-read"     onclick="showDTab('read')">📖 Leitura</button>
+        <button class="btn btn-g btn-sm" id="dtab-write"    onclick="showDTab('write')">✏️ Escrita</button>
+        <button class="btn btn-g btn-sm" id="dtab-files"    onclick="showDTab('files')">🖼️ Imagens & Docs</button>
+        <button class="btn btn-g btn-sm" id="dtab-advanced" onclick="showDTab('advanced')">⚡ Avançado</button>
+        <button class="btn btn-g btn-sm" id="dtab-errors"   onclick="showDTab('errors')">🔥 Erros</button>
       </div>
-      <div class="card" style="margin-bottom:14px">
-        <div class="card-hd"><h2>Endpoints disponíveis</h2></div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-get">GET</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/api/{coleção}</span><span style="color:var(--MU)">Listar todos (suporta ?_limit=10&_offset=0&campo=valor)</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-get">GET</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/api/{coleção}/{id}</span><span style="color:var(--MU)">Obter um registo</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-post">POST</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/api/{coleção}</span><span style="color:var(--MU)">Criar registo</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-pat">PATCH</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/api/{coleção}/{id}</span><span style="color:var(--MU)">Atualizar campos</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-put">PUT</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/api/{coleção}/{id}</span><span style="color:var(--MU)">Substituir registo completo</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-del">DEL</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/api/{coleção}/{id}</span><span style="color:var(--MU)">Eliminar registo</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-post">POST</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/files</span><span style="color:var(--MU)">Upload de ficheiro (base64)</span></div>
-          <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-get">GET</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">/files/{id}</span><span style="color:var(--MU)">URL público do ficheiro</span></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-hd">
-          <h2>Exemplos de código</h2>
-          <div style="display:flex;gap:5px">
-            <button class="btn btn-s btn-sm" id="dl-js" onclick="showDoc('js')">JavaScript</button>
-            <button class="btn btn-g btn-sm" id="dl-py" onclick="showDoc('py')">Python</button>
-            <button class="btn btn-g btn-sm" id="dl-cu" onclick="showDoc('cu')">cURL</button>
+
+      <!-- SETUP -->
+      <div id="dtab-setup-content">
+        <div class="g2" style="margin-bottom:12px">
+          <div class="card">
+            <div class="card-hd"><h2>🔑 O teu token e URL</h2></div>
+            <div style="font-size:12.5px;color:var(--T2);margin-bottom:10px">Cada coleção tem o seu token exclusivo. Vai a <strong>Tokens</strong> para ver.</div>
+            <div style="background:var(--SB);border-radius:9px;padding:12px 14px">
+              <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Base URL</div>
+              <div style="font-family:var(--M);font-size:11px;color:#86efac;word-break:break-all;margin-bottom:8px" id="docs-base-url-setup">—</div>
+              <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:6px">Token (da coleção)</div>
+              <div style="font-family:var(--M);font-size:11px;color:#fde68a;word-break:break-all" id="docs-token-setup">apl_SEU_TOKEN</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h2>⚡ Quickstart — 3 passos</h2></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="display:flex;gap:10px;align-items:flex-start">
+                <div style="width:22px;height:22px;background:var(--G);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">1</div>
+                <div><div style="font-size:12.5px;font-weight:600">Cria uma Coleção</div><div style="font-size:11.5px;color:var(--MU)">Sidebar → Nova Coleção → token gerado automaticamente</div></div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start">
+                <div style="width:22px;height:22px;background:var(--G);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">2</div>
+                <div><div style="font-size:12.5px;font-weight:600">Copia o Token</div><div style="font-size:11.5px;color:var(--MU)">Tokens → coleção → copiar token exclusivo</div></div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start">
+                <div style="width:22px;height:22px;background:var(--G);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0">3</div>
+                <div><div style="font-size:12.5px;font-weight:600">Faz o primeiro request</div><div style="font-size:11.5px;color:var(--MU)">Usa cURL, JS, Python ou qualquer linguagem</div></div>
+              </div>
+            </div>
           </div>
         </div>
-        <div id="doc-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-js').innerText)">Copiar</button></div><pre class="cb-body" id="dc-js">// Abre Documentação para ver o código com o teu token</pre></div>
-        <div id="doc-py" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Python</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-py').innerText)">Copiar</button></div><pre class="cb-body" id="dc-py"></pre></div>
-        <div id="doc-cu" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">cURL</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-cu').innerText)">Copiar</button></div><pre class="cb-body" id="dc-cu"></pre></div>
+
+        <!-- Language selector -->
+        <div class="card">
+          <div class="card-hd">
+            <h2>Setup inicial por linguagem</h2>
+            <div style="display:flex;gap:4px">
+              <button class="btn btn-p btn-xs" id="sl-js" onclick="showSetupLang('js')">JS</button>
+              <button class="btn btn-g btn-xs" id="sl-ts" onclick="showSetupLang('ts')">TypeScript</button>
+              <button class="btn btn-g btn-xs" id="sl-py" onclick="showSetupLang('py')">Python</button>
+              <button class="btn btn-g btn-xs" id="sl-cu" onclick="showSetupLang('cu')">cURL</button>
+              <button class="btn btn-g btn-xs" id="sl-php" onclick="showSetupLang('php')">PHP</button>
+              <button class="btn btn-g btn-xs" id="sl-dart" onclick="showSetupLang('dart')">Dart</button>
+            </div>
+          </div>
+          <div id="setup-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript / Node.js</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('sc-js').innerText)">Copiar</button></div><pre class="cb-body" id="sc-js"></pre></div>
+          <div id="setup-ts" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">TypeScript</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('sc-ts').innerText)">Copiar</button></div><pre class="cb-body" id="sc-ts"></pre></div>
+          <div id="setup-py" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Python</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('sc-py').innerText)">Copiar</button></div><pre class="cb-body" id="sc-py"></pre></div>
+          <div id="setup-cu" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">cURL</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('sc-cu').innerText)">Copiar</button></div><pre class="cb-body" id="sc-cu"></pre></div>
+          <div id="setup-php" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">PHP</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('sc-php').innerText)">Copiar</button></div><pre class="cb-body" id="sc-php"></pre></div>
+          <div id="setup-dart" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Dart / Flutter</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('sc-dart').innerText)">Copiar</button></div><pre class="cb-body" id="sc-dart"></pre></div>
+        </div>
       </div>
+
+      <!-- READ -->
+      <div id="dtab-read-content" style="display:none">
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-hd"><h2>📋 Endpoints de Leitura (GET)</h2></div>
+          <div style="display:flex;flex-direction:column;gap:6px" id="docs-endpoints-read"></div>
+        </div>
+        <div class="card">
+          <div class="card-hd">
+            <h2>Exemplos de leitura</h2>
+            <div style="display:flex;gap:4px">
+              <button class="btn btn-p btn-xs" id="rl-js" onclick="showReadLang('js')">JS</button>
+              <button class="btn btn-g btn-xs" id="rl-py" onclick="showReadLang('py')">Python</button>
+              <button class="btn btn-g btn-xs" id="rl-cu" onclick="showReadLang('cu')">cURL</button>
+            </div>
+          </div>
+          <div id="read-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('rc-js').innerText)">Copiar</button></div><pre class="cb-body" id="rc-js"></pre></div>
+          <div id="read-py" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Python</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('rc-py').innerText)">Copiar</button></div><pre class="cb-body" id="rc-py"></pre></div>
+          <div id="read-cu" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">cURL</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('rc-cu').innerText)">Copiar</button></div><pre class="cb-body" id="rc-cu"></pre></div>
+        </div>
       </div>
+
+      <!-- WRITE -->
+      <div id="dtab-write-content" style="display:none">
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-hd"><h2>✏️ Endpoints de Escrita</h2></div>
+          <div style="display:flex;flex-direction:column;gap:6px" id="docs-endpoints-write"></div>
+        </div>
+        <div class="card">
+          <div class="card-hd">
+            <h2>Exemplos de escrita</h2>
+            <div style="display:flex;gap:4px">
+              <button class="btn btn-p btn-xs" id="wl-js" onclick="showWriteLang('js')">JS</button>
+              <button class="btn btn-g btn-xs" id="wl-py" onclick="showWriteLang('py')">Python</button>
+              <button class="btn btn-g btn-xs" id="wl-cu" onclick="showWriteLang('cu')">cURL</button>
+            </div>
+          </div>
+          <div id="write-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('wc-js').innerText)">Copiar</button></div><pre class="cb-body" id="wc-js"></pre></div>
+          <div id="write-py" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Python</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('wc-py').innerText)">Copiar</button></div><pre class="cb-body" id="wc-py"></pre></div>
+          <div id="write-cu" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">cURL</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('wc-cu').innerText)">Copiar</button></div><pre class="cb-body" id="wc-cu"></pre></div>
+        </div>
+      </div>
+
+      <!-- FILES -->
+      <div id="dtab-files-content" style="display:none">
+        <div class="g2" style="margin-bottom:12px">
+          <div class="card">
+            <div class="card-hd"><h2>🖼️ Imagens</h2></div>
+            <div style="font-size:12.5px;color:var(--T2);margin-bottom:10px">Upload + URL público permanente</div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+              <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-post">POST</span><span style="font-family:var(--M);color:var(--G);font-size:11px">/files</span><span style="color:var(--MU)">Upload (base64)</span></div>
+              <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-get">GET</span><span style="font-family:var(--M);color:var(--G);font-size:11px">/files</span><span style="color:var(--MU)">Listar ficheiros</span></div>
+              <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-get">GET</span><span style="font-family:var(--M);color:var(--G);font-size:11px">/files/{id}</span><span style="color:var(--MU)">URL público (sem auth)</span></div>
+              <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-del">DEL</span><span style="font-family:var(--M);color:var(--G);font-size:11px">/files/{id}</span><span style="color:var(--MU)">Eliminar ficheiro</span></div>
+            </div>
+            <div style="font-size:11.5px;color:var(--MU)">Tipos suportados: JPG, PNG, GIF, WebP, PDF, JSON, CSV, TXT — máx. 4MB</div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h2>📎 Ligar ficheiros a dados</h2></div>
+            <div style="font-size:12.5px;color:var(--T2);margin-bottom:10px">Guarda o URL do ficheiro como campo de um registo:</div>
+            <div class="cb"><div class="cb-body" style="font-size:11px" id="dc-file-link">—</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd">
+            <h2>Upload de imagens e documentos</h2>
+            <div style="display:flex;gap:4px">
+              <button class="btn btn-p btn-xs" id="fl-js" onclick="showFileLang('js')">JS Browser</button>
+              <button class="btn btn-g btn-xs" id="fl-node" onclick="showFileLang('node')">Node.js</button>
+              <button class="btn btn-g btn-xs" id="fl-py" onclick="showFileLang('py')">Python</button>
+              <button class="btn btn-g btn-xs" id="fl-dart" onclick="showFileLang('dart')">Flutter</button>
+            </div>
+          </div>
+          <div id="file-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript — Browser (input file)</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('fc-js').innerText)">Copiar</button></div><pre class="cb-body" id="fc-js"></pre></div>
+          <div id="file-node" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Node.js (fs)</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('fc-node').innerText)">Copiar</button></div><pre class="cb-body" id="fc-node"></pre></div>
+          <div id="file-py" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Python</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('fc-py').innerText)">Copiar</button></div><pre class="cb-body" id="fc-py"></pre></div>
+          <div id="file-dart" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Dart / Flutter</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('fc-dart').innerText)">Copiar</button></div><pre class="cb-body" id="fc-dart"></pre></div>
+        </div>
+      </div>
+
+      <!-- ADVANCED -->
+      <div id="dtab-advanced-content" style="display:none">
+        <div class="g2" style="margin-bottom:12px">
+          <div class="card">
+            <div class="card-hd"><h2>🔍 Filtros e Paginação</h2></div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+              <div style="padding:7px 10px;background:var(--BG);border-radius:7px;font-size:11.5px"><code style="font-family:var(--M);color:var(--G)">?_limit=10&_offset=0</code><span style="color:var(--MU);margin-left:8px">Paginação</span></div>
+              <div style="padding:7px 10px;background:var(--BG);border-radius:7px;font-size:11.5px"><code style="font-family:var(--M);color:var(--G)">?_sort=nome&_order=asc</code><span style="color:var(--MU);margin-left:8px">Ordenação</span></div>
+              <div style="padding:7px 10px;background:var(--BG);border-radius:7px;font-size:11.5px"><code style="font-family:var(--M);color:var(--G)">?status=ativo</code><span style="color:var(--MU);margin-left:8px">Filtrar por campo</span></div>
+              <div style="padding:7px 10px;background:var(--BG);border-radius:7px;font-size:11.5px"><code style="font-family:var(--M);color:var(--G)">?categoria=tech&_limit=5</code><span style="color:var(--MU);margin-left:8px">Combinar filtros</span></div>
+            </div>
+            <div class="cb"><div class="cb-body" style="font-size:10.5px" id="dc-adv-filter">—</div></div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h2>📦 Inserção em massa (Bulk)</h2></div>
+            <div style="font-size:12.5px;color:var(--T2);margin-bottom:10px">Envia vários registos de uma vez:</div>
+            <div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">
+              <div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-post">POST</span><span style="font-family:var(--M);color:var(--G);font-size:11px">/api/{coleção}/bulk</span><span style="color:var(--MU)">Array de objetos</span></div>
+            </div>
+            <div class="cb"><div class="cb-body" style="font-size:10.5px" id="dc-adv-bulk">—</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><h2>🔁 Resposta da API — Estrutura</h2></div>
+          <div class="g2">
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--MU);margin-bottom:6px">GET (lista)</div>
+              <div class="cb"><div class="cb-body" style="font-size:10.5px">{
+  "data": [
+    { "_id": "rec_abc", "nome": "João", "_created": 1234567890 }
+  ],
+  "count": 1,
+  "total": 42,
+  "collection": "users",
+  "offset": 0,
+  "limit": 1000
+}</div></div>
+            </div>
+            <div>
+              <div style="font-size:11px;font-weight:700;color:var(--MU);margin-bottom:6px">POST (criar)</div>
+              <div class="cb"><div class="cb-body" style="font-size:10.5px">{
+  "_id": "rec_xyz123",
+  "_created": 1234567890,
+  "_updated": 1234567890,
+  "nome": "João",
+  "email": "<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8de7e2ece2cde8e0ece4e1a3fdf9">[email&#160;protected]</a>"
+}</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ERRORS -->
+      <div id="dtab-errors-content" style="display:none">
+        <div class="g2" style="margin-bottom:12px">
+          <div class="card">
+            <div class="card-hd"><h2>🔥 Erros comuns e soluções</h2></div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <div style="padding:10px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--ERR)">
+                <div style="font-weight:700;color:var(--ERR);margin-bottom:3px">401 Unauthorized</div>
+                <div style="font-size:12px;color:var(--T2)">Token inválido, em falta ou da coleção errada.<br><strong>Solução:</strong> Cada coleção tem o seu token. Vai a Tokens e copia o token correto.</div>
+              </div>
+              <div style="padding:10px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--ERR)">
+                <div style="font-weight:700;color:var(--ERR);margin-bottom:3px">404 Not Found</div>
+                <div style="font-size:12px;color:var(--T2)">Registo ou coleção não existe.<br><strong>Solução:</strong> Verifica o nome da coleção e o ID do registo.</div>
+              </div>
+              <div style="padding:10px 12px;background:#fef2f2;border-radius:8px;border-left:3px solid var(--ERR)">
+                <div style="font-weight:700;color:var(--ERR);margin-bottom:3px">400 Bad Request</div>
+                <div style="font-size:12px;color:var(--T2)">JSON inválido no body.<br><strong>Solução:</strong> Valida o JSON em jsonlint.com. Verifica vírgulas e aspas.</div>
+              </div>
+              <div style="padding:10px 12px;background:#fff7ed;border-radius:8px;border-left:3px solid var(--WARN)">
+                <div style="font-weight:700;color:var(--WARN);margin-bottom:3px">Timeout / Failed to fetch</div>
+                <div style="font-size:12px;color:var(--T2)">O servidor Render adormece após 15min sem uso.<br><strong>Solução:</strong> Aguarda 30-60 segundos e tenta novamente. O primeiro request "acorda" o servidor.</div>
+              </div>
+              <div style="padding:10px 12px;background:#fff7ed;border-radius:8px;border-left:3px solid var(--WARN)">
+                <div style="font-weight:700;color:var(--WARN);margin-bottom:3px">CORS Error (browser)</div>
+                <div style="font-size:12px;color:var(--T2)">O servidor já tem CORS ativo para todas as origens.<br><strong>Solução:</strong> Se ainda der erro, usa <code style="font-family:var(--M);font-size:10px;background:rgba(0,0,0,.07);padding:1px 4px;border-radius:3px">mode: 'cors'</code> no fetch.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-hd"><h2>✅ Checklist de debug</h2></div>
+            <div style="display:flex;flex-direction:column;gap:7px;font-size:13px">
+              <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" style="margin-top:2px"> <span>O URL começa com <code style="font-family:var(--M);font-size:11px;background:var(--BG);padding:1px 5px;border-radius:3px" id="docs-server-check">https://…</code></span></label>
+              <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" style="margin-top:2px"> <span>O token é o da coleção correta (não o de outra)</span></label>
+              <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" style="margin-top:2px"> <span>O header é exatamente <code style="font-family:var(--M);font-size:11px;background:var(--BG);padding:1px 5px;border-radius:3px">Authorization: Bearer apl_xxx</code></span></label>
+              <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" style="margin-top:2px"> <span>O Content-Type é <code style="font-family:var(--M);font-size:11px;background:var(--BG);padding:1px 5px;border-radius:3px">application/json</code></span></label>
+              <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" style="margin-top:2px"> <span>O body é JSON válido (sem trailing commas)</span></label>
+              <label style="display:flex;gap:8px;align-items:flex-start;cursor:pointer"><input type="checkbox" style="margin-top:2px"> <span>Testei no API Explorer e funcionou</span></label>
+            </div>
+            <div class="div"></div>
+            <button class="btn btn-p btn-sm" onclick="nav('explorer')">▶ Abrir API Explorer</button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- ══════ SETTINGS ══════ -->
@@ -948,20 +1295,97 @@ GET /api/colecao?token=<span class="cs" id="docs-token-example2">apl_xxx</span><
 
 <!-- Add Record -->
 <div class="mo-bg" id="mo-mr">
-  <div class="mo wide">
+  <div class="mo wide" style="max-width:600px">
     <button class="mo-x" onclick="closeMo('mr')">×</button>
-    <div class="mo-title">Adicionar Registo</div>
-    <div class="mo-sub">Coleção: <span style="font-family:var(--M);color:var(--G)" id="mr-coll"></span></div>
-    <div class="fi">
-      <label class="lb">Dados JSON
-        <div class="tip"><div class="tip-icon">?</div><div class="tip-box">Qualquer objeto JSON válido. O ID é gerado automaticamente. Não incluas _id nem _created.</div></div>
-      </label>
-      <textarea class="ip ip-mo" id="mr-json" style="min-height:130px">{\n  "campo": "valor",\n  "numero": 42\n}</textarea>
+    <div class="mo-title" style="display:flex;align-items:center;gap:8px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:20px;height:20px;color:var(--G)"><rect x="3" y="3" width="18" height="18" rx="3"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      Adicionar Registo
     </div>
-    <div class="ferr" id="mr-err"></div>
-    <div class="mo-foot">
+    <div class="mo-sub">Coleção: <span style="font-family:var(--M);color:var(--G);font-weight:700" id="mr-coll"></span></div>
+
+    <div class="mr-tabs">
+      <button class="mr-tab on" id="mr-tab-form" onclick="switchMrTab('form')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:4px"><rect x="3" y="5" width="18" height="14" rx="2"/><line x1="7" y1="9" x2="17" y2="9"/><line x1="7" y1="13" x2="13" y2="13"/></svg>
+        Formulário
+      </button>
+      <button class="mr-tab" id="mr-tab-json" onclick="switchMrTab('json')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:4px"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        JSON
+      </button>
+      <button class="mr-tab" id="mr-tab-files" onclick="switchMrTab('files')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;display:inline-block;vertical-align:-2px;margin-right:4px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        Imagens & Ficheiros
+      </button>
+    </div>
+
+    <!-- FORMULÁRIO TAB -->
+    <div id="mr-panel-form">
+      <div id="mr-smart-fields" class="smart-field"></div>
+      <button class="btn btn-g btn-sm" onclick="addSmartField()" style="margin-top:4px">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Adicionar campo
+      </button>
+    </div>
+
+    <!-- JSON TAB -->
+    <div id="mr-panel-json" style="display:none">
+      <div class="fi">
+        <label class="lb">Dados JSON
+          <div class="tip"><div class="tip-icon">?</div><div class="tip-box">Qualquer objeto JSON válido. O ID é gerado automaticamente. Não incluas _id nem _created.</div></div>
+        </label>
+        <div style="display:flex;gap:5px;margin-bottom:5px">
+          <button class="btn btn-g btn-xs" onclick="formatMrJson()">Formatar</button>
+          <button class="btn btn-g btn-xs" onclick="syncFormToJson()">← Form para JSON</button>
+          <button class="btn btn-g btn-xs" onclick="syncJsonToForm()">JSON para Form →</button>
+        </div>
+        <textarea class="ip ip-mo" id="mr-json" style="min-height:140px">{\n  "campo": "valor",\n  "numero": 42\n}</textarea>
+      </div>
+    </div>
+
+    <!-- FILES TAB -->
+    <div id="mr-panel-files" style="display:none">
+      <div style="font-size:12.5px;color:var(--T2);margin-bottom:10px;line-height:1.5">
+        Faz upload de imagens e documentos. O URL público é guardado como campo no registo. Máx <strong>4MB</strong> por ficheiro.
+      </div>
+      <div class="dropzone" id="mr-dropzone" ondragover="event.preventDefault();this.classList.add('drag')" ondragleave="this.classList.remove('drag')" ondrop="handleFileDrop(event)">
+        <input type="file" multiple accept="image/*,.pdf,.csv,.json,.txt,.docx,.xlsx" onchange="handleFileSelect(event)">
+        <div class="dropzone-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+        <div class="dz-label">Arrasta ficheiros ou clica para selecionar</div>
+        <div class="dz-hint">JPG, PNG, GIF, WebP, PDF, JSON, CSV, TXT</div>
+        <div class="upload-prog" id="mr-prog"><div class="upload-prog-bar" id="mr-prog-bar"></div></div>
+      </div>
+      <div class="attach-list" id="mr-attach-list"></div>
+      <div class="hint" style="margin-top:8px">Cada ficheiro fica guardado como um campo URL no registo. Podes renomear o campo clicando no nome.</div>
+    </div>
+
+    <div class="ferr" id="mr-err" style="margin-top:10px"></div>
+    <div class="mo-foot" style="margin-top:16px">
       <button class="btn btn-g" onclick="closeMo('mr')">Cancelar</button>
-      <button class="btn btn-p" onclick="addRec()">Guardar Registo</button>
+      <button class="btn btn-p" onclick="addRec()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:13px;height:13px"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar Registo
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Record Modal -->
+<div class="mo-bg" id="mo-er">
+  <div class="mo wide" style="max-width:560px">
+    <button class="mo-x" onclick="closeMo('er')">×</button>
+    <div class="mo-title" style="display:flex;align-items:center;gap:8px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;color:var(--G)"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Editar Registo
+    </div>
+    <div class="mo-sub" id="er-id-display" style="font-family:var(--M);font-size:11px;color:var(--MU)"></div>
+    <div id="er-fields" style="display:flex;flex-direction:column;gap:8px;margin-bottom:4px"></div>
+    <div class="ferr" id="er-err"></div>
+    <div class="mo-foot">
+      <button class="btn btn-g" onclick="closeMo('er')">Cancelar</button>
+      <button class="btn btn-p" onclick="saveEdit()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:13px;height:13px"><polyline points="20 6 9 17 4 12"/></svg>
+        Guardar alterações
+      </button>
     </div>
   </div>
 </div>
@@ -1084,7 +1508,7 @@ GET /api/colecao?token=<span class="cs" id="docs-token-example2">apl_xxx</span><
 
 <div id="toasts"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ════════════════════════════════
 //  CONFIG — URL do servidor real
 // ════════════════════════════════
@@ -1192,6 +1616,7 @@ function genTk(pfx='apl') { const c='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopq
 function trunc(s,n=32) { s=String(s??''); return s.length>n?s.slice(0,n)+'…':s; }
 function ago(ts) { const d=(Date.now()-ts)/1000; if(d<60)return 'agora'; if(d<3600)return Math.floor(d/60)+'m'; if(d<86400)return Math.floor(d/3600)+'h'; return Math.floor(d/86400)+'d'; }
 function cpTxt(t) { navigator.clipboard?.writeText(t).catch(()=>{ const el=document.createElement('textarea'); el.value=t; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); }); toast('Copiado!','ok'); }
+function setErr(id, msg) { const el=document.getElementById(id+'-err'); if(el){el.textContent=msg;el.classList.add('show');} }
 
 // ════════════════════════════════
 //  TOAST
@@ -1372,7 +1797,7 @@ function nav(id) {
   if (id==='share')       renderShare();
   if (id==='settings')    renderSettings();
   if (id==='ai')          updateAICtx();
-  if (id==='docs')        { renderDash(); updateDocsToken(); }
+  if (id==='docs')        { renderDash(); showDTab('setup'); }
 }
 
 // ════════════════════════════════
@@ -1504,13 +1929,30 @@ function renderRecs(coll) {
   const panel = document.getElementById('cl-panel');
   panel.innerHTML = `
     <div class="cl-panel-hd">
-      <span style="font-family:var(--M);font-size:12px;color:var(--G);background:var(--Gd);padding:2px 9px;border-radius:5px">${coll}</span>
-      ${cd.desc?`<span style="font-size:12.5px;color:var(--T2)">${cd.desc}</span>`:''}
-      <span class="bx bx-gray">${recs.length} registos</span>
-      <div style="margin-left:auto;display:flex;gap:6px">
-        <button class="btn btn-g btn-sm" onclick="exportColl('${coll}')">⬇ Export</button>
-        <button class="btn btn-g btn-sm" style="color:var(--ERR);border-color:#fecaca" onclick="delColl('${coll}')">🗑</button>
-        <button class="btn btn-p btn-sm" onclick="openAddRec('${coll}')">+ Adicionar</button>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;color:var(--G);flex-shrink:0"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+      <span style="font-family:var(--M);font-size:13px;font-weight:700;color:var(--G)">${coll}</span>
+      ${cd.desc?`<span style="font-size:12px;color:var(--MU)">${cd.desc}</span>`:''}
+      <span class="coll-stat-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:10px;height:10px"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>${recs.length} registos</span>
+      <div style="margin-left:auto;display:flex;gap:5px;align-items:center">
+        <div class="view-toggle" id="vt-${coll}">
+          <button class="vt-btn on" id="vt-table-${coll}" onclick="setView('${coll}','table')" title="Tabela">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="9" y1="9" x2="9" y2="21"/></svg>
+          </button>
+          <button class="vt-btn" id="vt-cards-${coll}" onclick="setView('${coll}','cards')" title="Cards">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          </button>
+        </div>
+        <button class="btn btn-g btn-sm" onclick="exportColl('${coll}')" title="Exportar JSON">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export
+        </button>
+        <button class="btn btn-g btn-sm" style="color:var(--ERR);border-color:#fecaca" onclick="delColl('${coll}')" title="Eliminar coleção">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>
+        </button>
+        <button class="btn btn-p btn-sm" onclick="openAddRec('${coll}')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Adicionar
+        </button>
       </div>
     </div>
 
@@ -1552,48 +1994,318 @@ function renderRecs(coll) {
       <input placeholder="Pesquisar registos..." oninput="searchRecs('${coll}',this.value)" id="srch-${coll}">
     </div>
     ${!recs.length
-      ? `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg><h3>Sem registos</h3><p>Clica em "+ Adicionar" ou usa a API com o token acima.</p></div>`
-      : `<div class="tw" style="border:none;border-radius:0"><table><thead><tr><th>ID</th>${fields.map(f=>`<th>${f}</th>`).join('')}<th>Criado</th><th></th></tr></thead><tbody id="tb-${coll}">${recs.map(r=>recRow(r,fields,coll)).join('')}</tbody></table></div>`
+      ? `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg><h3>Sem registos</h3><p>Clica em "Adicionar" ou usa a API com o token acima.</p><button class="btn btn-p" onclick="openAddRec('${coll}')">Adicionar primeiro registo</button></div>`
+      : `<div id="rec-view-${coll}"><div class="tw" style="border:none;border-radius:0"><table><thead><tr><th>ID</th>${fields.map(f=>`<th>${f}</th>`).join('')}<th>Criado</th><th></th></tr></thead><tbody id="tb-${coll}">${recs.map(r=>recRow(r,fields,coll)).join('')}</tbody></table></div></div>`
     }`;
 }
 
+function isImgUrl(v) { return typeof v==='string' && /\.(jpg|jpeg|png|gif|webp|svg)(\?|$)/i.test(v) && v.startsWith('http'); }
+function isDocUrl(v) { return typeof v==='string' && /\.(pdf|csv|json|txt|docx|xlsx)(\?|$)/i.test(v) && v.startsWith('http'); }
+
+function renderCellVal(v) {
+  const s = String(v??'');
+  if (isImgUrl(s)) return `<img src="${s}" class="td-img" onerror="this.style.display='none'" loading="lazy">`;
+  if (isDocUrl(s)) { const ext=s.split('.').pop().split('?')[0].toUpperCase(); return `<a href="${s}" target="_blank" class="td-doc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>${ext}</a>`; }
+  return trunc(s);
+}
+
 function recRow(r,fields,coll) {
-  return `<tr id="rw-${r._id}"><td class="td-id" title="${r._id}">${r._id.replace('rec_','').slice(0,8)}</td>${fields.map(f=>`<td class="td-v" title="${String(r[f]??'')}">${trunc(String(r[f]??''))}</td>`).join('')}<td style="font-size:11px;color:var(--MU2)">${new Date(r._created).toLocaleDateString('pt-PT')}</td><td><div style="display:flex;gap:4px"><button class="btn btn-g btn-ico" title="Copiar JSON" onclick="cpTxt(JSON.stringify(${JSON.stringify(r).replace(/'/g,'\\\'')},null,2))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button><button class="btn btn-d btn-ico" title="Eliminar" onclick="delRec('${coll}','${r._id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button></div></td></tr>`;
+  const actBtns = `<div style="display:flex;gap:3px">
+    <button class="btn btn-g btn-ico" title="Editar" onclick="openEditRec('${coll}','${r._id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
+    <button class="btn btn-g btn-ico" title="Copiar JSON" onclick="cpTxt(JSON.stringify(${JSON.stringify(r).replace(/'/g,'\\\'')},null,2))"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+    <button class="btn btn-d btn-ico" title="Eliminar" onclick="delRec('${coll}','${r._id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+  </div>`;
+  return `<tr id="rw-${r._id}"><td class="td-id" title="${r._id}">${r._id.replace('rec_','').slice(0,8)}</td>${fields.map(f=>`<td class="td-v" title="${String(r[f]??'')}">${renderCellVal(r[f])}</td>`).join('')}<td style="font-size:11px;color:var(--MU2)">${new Date(r._created).toLocaleDateString('pt-PT')}</td><td>${actBtns}</td></tr>`;
 }
 
 function searchRecs(coll, q) {
   const recs=S.recs(coll), tb=document.getElementById('tb-'+coll);
-  if(!tb)return;
-  const fs=new Set(); recs.forEach(r=>Object.keys(r).filter(k=>!k.startsWith('_')).forEach(k=>fs.add(k)));
-  const fields=[...fs];
+  const fset=new Set(); recs.forEach(r=>Object.keys(r).filter(k=>!k.startsWith('_')).forEach(k=>fset.add(k)));
+  const fields=[...fset];
   const f = q ? recs.filter(r=>JSON.stringify(r).toLowerCase().includes(q.toLowerCase())) : recs;
-  tb.innerHTML = f.map(r=>recRow(r,fields,coll)).join('');
+  // Table view
+  if(tb) { tb.innerHTML = f.map(r=>recRow(r,fields,coll)).join(''); return; }
+  // Card view — re-render with filtered data
+  const view = _collView[coll]||'table';
+  if(view==='cards'){
+    const container=document.getElementById('rec-view-'+coll); if(!container)return;
+    const fake = {...S, recs:()=>f};
+    container.innerHTML = `<div class="rec-cards">${f.map(r=>{
+      const imgField=fields.find(fld=>isImgUrl(String(r[fld]||'')));
+      const imgHtml=imgField?`<img src="${r[imgField]}" class="rec-card-img" onerror="this.style.display='none'" loading="lazy">`:'';
+      const displayFields=fields.filter(fld=>fld!==imgField).slice(0,3);
+      return `<div class="rec-card">${imgHtml}<div class="rec-card-body"><div class="rec-card-id">${r._id.slice(0,12)}…</div>${displayFields.map(fld=>`<div class="rec-card-field"><span class="rec-card-field-k">${fld}:</span><span class="rec-card-field-v">${trunc(String(r[fld]??''),40)}</span></div>`).join('')}</div><div class="rec-card-foot"><button class="btn btn-g btn-xs" onclick="openEditRec('${coll}','${r._id}')">Editar</button><button class="btn btn-d btn-xs" onclick="delRec('${coll}','${r._id}')">✕</button></div></div>`;
+    }).join('')}</div>`;
+  }
+}
+
+// ── SMART RECORD FORM ──
+let _mrAttachments = []; // [{key, name, url, type}]
+let _mrSmartFields = []; // [{key, type, val}]
+let _mrColl = '';
+
+function switchMrTab(tab) {
+  ['form','json','files'].forEach(t => {
+    document.getElementById('mr-tab-'+t)?.classList.toggle('on', t===tab);
+    document.getElementById('mr-panel-'+t).style.display = t===tab ? '' : 'none';
+  });
+  if (tab==='json') syncFormToJson();
+  if (tab==='form') syncJsonToForm();
+}
+
+function guessInputType(key, val) {
+  if (typeof val === 'number') return 'number';
+  if (typeof val === 'boolean') return 'checkbox';
+  if (typeof val === 'string') {
+    if (/email/i.test(key)) return 'email';
+    if (/url|link|foto|imagem|img|avatar|thumb/i.test(key)) return 'url';
+    if (/data|date|dt/i.test(key)) return 'date';
+    if (/descri|obs|nota|texto|bio|bio|summary|content/i.test(key)) return 'textarea';
+    if (/tel|phone|tlm/i.test(key)) return 'tel';
+    if (val.length > 80) return 'textarea';
+  }
+  return 'text';
+}
+
+function buildSmartFieldHTML(key, val, idx) {
+  const type = guessInputType(key, val);
+  const typeBadge = {'number':'Número','checkbox':'Booleano','email':'Email','url':'URL','date':'Data','textarea':'Texto','tel':'Tel','text':'Texto'}[type]||'Texto';
+  const inputId = `sf-${idx}`;
+  let inputHtml;
+  if (type === 'textarea') inputHtml = `<textarea class="ip ip-mo" id="${inputId}" rows="2" style="min-height:56px">${val??''}</textarea>`;
+  else if (type === 'checkbox') inputHtml = `<select class="ip" id="${inputId}"><option value="true" ${val?'selected':''}>true</option><option value="false" ${!val?'selected':''}>false</option></select>`;
+  else inputHtml = `<input class="ip" id="${inputId}" type="${type}" value="${String(val??'').replace(/"/g,'&quot;')}" placeholder="${key}...">`;
+  return `<div class="sf-row" data-sfidx="${idx}">
+    <div class="sf-label">
+      <input class="ip ip-sm" style="max-width:140px;font-weight:700;font-family:var(--M);font-size:11px" value="${key}" id="sfk-${idx}" placeholder="campo">
+      <span class="sf-type-badge">${typeBadge}</span>
+      <button onclick="removeSmartField(${idx})" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--ERR);opacity:.5;padding:2px 4px;border-radius:4px" title="Remover">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:11px;height:11px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    ${inputHtml}
+  </div>`;
+}
+
+function renderSmartFields() {
+  const container = document.getElementById('mr-smart-fields');
+  container.innerHTML = _mrSmartFields.length
+    ? _mrSmartFields.map((f,i) => buildSmartFieldHTML(f.key, f.val, i)).join('')
+    : '<div style="text-align:center;padding:20px;color:var(--MU);font-size:12.5px">Sem campos ainda. Clica em "Adicionar campo" ou muda para JSON.</div>';
+}
+
+function addSmartField(key='campo', val='') {
+  _mrSmartFields.push({key,val});
+  renderSmartFields();
+}
+
+function removeSmartField(idx) {
+  _mrSmartFields.splice(idx,1);
+  renderSmartFields();
+}
+
+function readSmartFields() {
+  const obj = {};
+  _mrSmartFields.forEach((_, i) => {
+    const k = document.getElementById('sfk-'+i)?.value?.trim();
+    const el = document.getElementById('sf-'+i);
+    if (!k || !el) return;
+    const v = el.value;
+    if (el.tagName === 'SELECT') obj[k] = v === 'true';
+    else if (el.type === 'number') obj[k] = parseFloat(v)||0;
+    else obj[k] = v;
+  });
+  _mrAttachments.forEach(a => { obj[a.key] = a.url; });
+  return obj;
+}
+
+function syncFormToJson() {
+  try {
+    const obj = readSmartFields();
+    document.getElementById('mr-json').value = JSON.stringify(obj, null, 2);
+  } catch {}
+}
+
+function syncJsonToForm() {
+  try {
+    const data = JSON.parse(document.getElementById('mr-json').value);
+    _mrSmartFields = Object.entries(data).filter(([k])=>!k.startsWith('_')).map(([k,v])=>({key:k,val:v}));
+    renderSmartFields();
+  } catch {}
+}
+
+function formatMrJson() {
+  try { const el=document.getElementById('mr-json'); el.value=JSON.stringify(JSON.parse(el.value),null,2); } catch {}
+}
+
+// ── FILE ATTACHMENT ──
+async function handleFileSelect(e) { await processFiles([...e.target.files]); }
+async function handleFileDrop(e) { e.preventDefault(); document.getElementById('mr-dropzone').classList.remove('drag'); await processFiles([...e.dataTransfer.files]); }
+
+async function processFiles(files) {
+  const prog = document.getElementById('mr-prog'); const bar = document.getElementById('mr-prog-bar');
+  const B = SERVER_URL; const tk = (() => { const cd=S.colls()[_mrColl]||{}; return cd.token||_getToken()||''; })();
+  for (let i=0;i<files.length;i++) {
+    const f = files[i];
+    if (f.size > 4*1024*1024) { toast(`${f.name}: máx 4MB`,'er'); continue; }
+    prog.classList.add('show'); bar.style.width = Math.round((i/files.length)*100)+'%';
+    try {
+      const b64 = await new Promise(res=>{ const r=new FileReader(); r.onload=e=>res(e.target.result); r.readAsDataURL(f); });
+      const res = await fetch(B+'/files',{method:'POST',headers:{'Authorization':'Bearer '+tk,'Content-Type':'application/json'},body:JSON.stringify({name:f.name,type:f.type,data:b64,size:f.size})});
+      const d = await res.json();
+      if (d.url) {
+        const key = f.name.replace(/\.[^.]+$/,'').replace(/[^a-zA-Z0-9_]/g,'_').toLowerCase() || 'ficheiro';
+        _mrAttachments.push({key, name:f.name, url:d.url, type:f.type});
+        renderAttachList();
+        toast(`${f.name} carregado!`,'ok');
+      }
+    } catch(e) { toast('Erro upload: '+e.message,'er'); }
+  }
+  bar.style.width='100%'; setTimeout(()=>{ prog.classList.remove('show'); bar.style.width='0%'; },600);
+}
+
+function renderAttachList() {
+  const list = document.getElementById('mr-attach-list');
+  list.innerHTML = _mrAttachments.map((a,i) => {
+    const isImg = /image/.test(a.type);
+    const thumbHtml = isImg ? `<img src="${a.url}" class="attach-thumb" style="width:34px;height:34px;border-radius:6px;object-fit:cover">` : `<div class="attach-thumb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>`;
+    return `<div class="attach-item">
+      ${thumbHtml}
+      <div style="flex:1;min-width:0">
+        <div class="attach-name">${a.name}</div>
+        <div style="display:flex;align-items:center;gap:5px;margin-top:2px">
+          <span style="font-size:10px;color:var(--MU)">campo:</span>
+          <input class="attach-key" value="${a.key}" style="min-width:60px;width:auto" oninput="_mrAttachments[${i}].key=this.value">
+        </div>
+      </div>
+      <button class="attach-rm" onclick="_mrAttachments.splice(${i},1);renderAttachList()" title="Remover">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>`;
+  }).join('');
 }
 
 function openAddRec(coll) {
+  _mrColl = coll;
+  _mrAttachments = [];
   document.getElementById('mr-coll').textContent = coll;
-  const r=S.recs(coll);
-  if (r.length) {
-    const s={...r[0]}; delete s._id; delete s._created;
-    Object.keys(s).forEach(k=>{ if(typeof s[k]==='string')s[k]=''; else if(typeof s[k]==='number')s[k]=0; else if(typeof s[k]==='boolean')s[k]=false; });
-    document.getElementById('mr-json').value = JSON.stringify(s,null,2);
-  } else document.getElementById('mr-json').value = '{\n  "campo": "valor"\n}';
   document.getElementById('mr-err').classList.remove('show');
+  renderAttachList();
+
+  const r = S.recs(coll);
+  if (r.length) {
+    const s={...r[0]}; delete s._id; delete s._created; delete s._updated;
+    Object.keys(s).forEach(k=>{ if(typeof s[k]==='string')s[k]=''; else if(typeof s[k]==='number')s[k]=0; else if(typeof s[k]==='boolean')s[k]=false; });
+    _mrSmartFields = Object.entries(s).map(([k,v])=>({key:k,val:v}));
+    document.getElementById('mr-json').value = JSON.stringify(s,null,2);
+  } else {
+    _mrSmartFields = [{key:'nome',val:''},{key:'valor',val:''}];
+    document.getElementById('mr-json').value = '{\n  "nome": "",\n  "valor": ""\n}';
+  }
+  renderSmartFields();
+  switchMrTab('form');
   openMo('mr');
 }
 
+// ── EDIT RECORD ──
+let _erColl='', _erId='';
+function openEditRec(coll, id) {
+  const recs = S.recs(coll);
+  const rec = recs.find(r=>r._id===id); if (!rec) return;
+  _erColl = coll; _erId = id;
+  document.getElementById('er-id-display').textContent = id;
+  const fields = Object.entries(rec).filter(([k])=>!k.startsWith('_'));
+  document.getElementById('er-fields').innerHTML = fields.map(([k,v])=>{
+    const type = guessInputType(k, v);
+    const isImg = isImgUrl(String(v));
+    const isDoc = isDocUrl(String(v));
+    let inp;
+    if (type==='textarea') inp = `<textarea class="ip ip-mo" id="erf-${k}" rows="2" style="min-height:56px">${v}</textarea>`;
+    else if (type==='checkbox') inp = `<select class="ip" id="erf-${k}"><option value="true" ${v?'selected':''}>true</option><option value="false" ${!v?'selected':''}>false</option></select>`;
+    else inp = `<input class="ip" id="erf-${k}" type="${type}" value="${String(v??'').replace(/"/g,'&quot;')}">`;
+    const preview = isImg ? `<img src="${v}" style="height:40px;border-radius:6px;margin-top:4px;object-fit:cover" onerror="this.style.display='none'">` : isDoc ? `<a href="${v}" target="_blank" class="td-doc" style="margin-top:4px;display:inline-flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>Abrir</a>` : '';
+    return `<div class="edit-field-row"><div class="edit-field-key">${k}</div><div class="edit-field-val">${inp}${preview}</div></div>`;
+  }).join('');
+  document.getElementById('er-err').classList.remove('show');
+  openMo('er');
+}
+
+async function saveEdit() {
+  const recs = S.recs(_erColl);
+  const rec = recs.find(r=>r._id===_erId); if (!rec) return;
+  const updates = {};
+  Object.entries(rec).filter(([k])=>!k.startsWith('_')).forEach(([k,v])=>{
+    const el = document.getElementById('erf-'+k); if (!el) return;
+    if (el.tagName==='SELECT') updates[k] = el.value==='true';
+    else if (el.type==='number') updates[k] = parseFloat(el.value)||0;
+    else updates[k] = el.value;
+  });
+  try {
+    const updated = await apiFetch('/api/'+_erColl+'/'+_erId, {method:'PATCH', body:JSON.stringify(updates)});
+    const idx = recs.findIndex(r=>r._id===_erId);
+    if (idx>=0) recs[idx] = {...recs[idx],...updated};
+    S.setRecs(_erColl, recs);
+    closeMo('er'); renderRecs(_erColl); toast('Registo atualizado!','ok');
+  } catch(e) { setErr('er','Erro: '+e.message); }
+}
+
+// ── VIEW TOGGLE ──
+const _collView = {};
+function setView(coll, view) {
+  _collView[coll] = view;
+  document.getElementById('vt-table-'+coll)?.classList.toggle('on', view==='table');
+  document.getElementById('vt-cards-'+coll)?.classList.toggle('on', view==='cards');
+  renderRecView(coll);
+}
+
+function renderRecView(coll) {
+  const view = _collView[coll]||'table';
+  const recs = S.recs(coll);
+  const container = document.getElementById('rec-view-'+coll); if (!container) return;
+  const fset = new Set(); recs.forEach(r=>Object.keys(r).filter(k=>!k.startsWith('_')).forEach(k=>fset.add(k)));
+  const fields = [...fset];
+  if (view === 'cards') {
+    container.innerHTML = `<div class="rec-cards">${recs.map(r => {
+      const imgField = fields.find(f=>isImgUrl(String(r[f]||'')));
+      const imgHtml = imgField ? `<img src="${r[imgField]}" class="rec-card-img" onerror="this.style.display='none'" loading="lazy">` : '';
+      const displayFields = fields.filter(f=>f!==imgField).slice(0,3);
+      return `<div class="rec-card">
+        ${imgHtml}
+        <div class="rec-card-body">
+          <div class="rec-card-id">${r._id.slice(0,12)}…</div>
+          ${displayFields.map(f=>`<div class="rec-card-field"><span class="rec-card-field-k">${f}:</span><span class="rec-card-field-v">${trunc(String(r[f]??''),40)}</span></div>`).join('')}
+        </div>
+        <div class="rec-card-foot">
+          <button class="btn btn-g btn-xs" onclick="openEditRec('${coll}','${r._id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Editar</button>
+          <button class="btn btn-d btn-xs" onclick="delRec('${coll}','${r._id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:10px;height:10px"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg></button>
+        </div>
+      </div>`;
+    }).join('')}</div>`;
+  } else {
+    container.innerHTML = `<div class="tw" style="border:none;border-radius:0"><table><thead><tr><th>ID</th>${fields.map(f=>`<th>${f}</th>`).join('')}<th>Criado</th><th></th></tr></thead><tbody id="tb-${coll}">${recs.map(r=>recRow(r,fields,coll)).join('')}</tbody></table></div>`;
+  }
+}
+
 async function addRec() {
-  const coll=document.getElementById('mr-coll').textContent;
+  const coll = document.getElementById('mr-coll').textContent;
+  // Determine active tab
+  const activeTab = document.querySelector('.mr-tab.on')?.id?.replace('mr-tab-','') || 'json';
   let data;
-  try { data=JSON.parse(document.getElementById('mr-json').value); } catch(e) { setErr('mr','JSON inválido: '+e.message); return; }
-  if (Array.isArray(data)) { setErr('mr','Usa um objeto {}, não um array []'); return; }
+  if (activeTab === 'json') {
+    try { data = JSON.parse(document.getElementById('mr-json').value); } catch(e) { setErr('mr','JSON inválido: '+e.message); return; }
+    if (Array.isArray(data)) { setErr('mr','Usa um objeto {}, não um array []'); return; }
+  } else {
+    // form or files
+    data = readSmartFields();
+    if (!Object.keys(data).length) { setErr('mr','Adiciona pelo menos um campo'); return; }
+  }
   try {
     const rec = await apiFetch('/api/'+coll, { method:'POST', body: JSON.stringify(data) });
     const r=S.recs(coll); r.push(rec); S.setRecs(coll,r);
     S.addAct('record',`Registo adicionado em <strong>${coll}</strong>`);
     closeMo('mr'); renderRecs(coll); renderColls(); renderDash(); updateBadges();
     toast('Registo adicionado!','ok');
-  } catch(e) { toast('Erro: '+e.message,'er'); }
+  } catch(e) { setErr('mr','Erro: '+e.message); }
 }
 
 async function delRec(coll, id) {
@@ -1626,7 +2338,13 @@ function exportColl(coll) {
   toast(`Exportado ${r.length} registos`,'ok');
 }
 
-function loadExplorer(coll) { document.getElementById('t-url').value=SERVER_URL+'/api/'+coll; nav('explorer'); }
+function loadExplorer(coll) {
+  const cd = S.colls()[coll]||{};
+  const tk = cd.token || _getToken() || '';
+  document.getElementById('t-url').value = SERVER_URL+'/api/'+coll;
+  if (tk) { document.getElementById('t-tk').value=tk; setTimeout(()=>{ const s=document.getElementById('t-tk-sel'); if(s) s.value=tk; },50); }
+  nav('explorer');
+}
 
 // ════════════════════════════════
 //  TOKENS
@@ -1646,7 +2364,7 @@ async function createToken() {
     document.getElementById('mt-btn').style.display = 'none';
     document.getElementById('mt-cancel').textContent = 'Fechar';
     renderTokens(); updateBadges(); syncTesterTokens();
-    toast('Token gerado! Copia-o agora.','wa');
+    toast('Token gerado!','wa');
   } catch(e) { toast('Erro: '+e.message,'er'); }
   btn.disabled = false;
 }
@@ -1658,92 +2376,57 @@ function cpCurlExample() {
 }
 
 function loadExplorerWithToken(key) {
-  nav('explorer');
-  setTimeout(() => {
-    const sel = document.getElementById('t-tk-sel');
-    const inp = document.getElementById('t-tk');
-    if (sel) sel.value = key;
-    if (inp) inp.value = key;
-  }, 100);
+  const inp = document.getElementById('t-tk'); if(inp) inp.value = key;
+  setTimeout(()=>{ const sel = document.getElementById('t-tk-sel'); if(sel) sel.value = key; }, 80);
 }
 
 function renderTokens() {
-  const colls = S.colls();
-  const list  = document.getElementById('tokens-list');
-  const ns    = Object.keys(colls);
-
+  const colls = S.colls(), list = document.getElementById('tokens-list'), ns = Object.keys(colls);
   if (!ns.length) {
-    list.innerHTML = `<div class="empty">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-      <h3>Sem coleções ainda</h3>
-      <p>Cria uma coleção — o token é gerado automaticamente.</p>
-      <button class="btn btn-p" onclick="openMo('mc')">Criar primeira coleção</button>
-    </div>`;
+    list.innerHTML = `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg><h3>Sem coleções ainda</h3><p>Cria uma coleção — o token é gerado automaticamente.</p><button class="btn btn-p" onclick="openMo('mc')">Criar primeira coleção</button></div>`;
     return;
   }
-
-  list.innerHTML = `
-    <div class="info-banner" style="margin-bottom:14px">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-      <p>Cada coleção tem o seu próprio token exclusivo gerado automaticamente. Usa o token da coleção que precisas.</p>
-    </div>
-    ${ns.map(n => {
-      const cd = colls[n];
-      const tk = cd.token || '';
-      const apiUrl = `${SERVER_URL}/api/${n}`;
-      if (!tk) return `<div class="card" style="margin-bottom:10px;opacity:.6">
-        <div style="display:flex;align-items:center;gap:9px">
-          <span style="font-family:var(--M);font-size:13px;font-weight:700;color:var(--G)">${n}</span>
-          <span style="font-size:12px;color:var(--MU)">Sem token — coleção antiga</span>
-          <button class="btn btn-p btn-sm" style="margin-left:auto" onclick="regenerateToken('${n}')">Gerar Token</button>
+  list.innerHTML = '<div class="info-banner" style="margin-bottom:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><p>Cada coleção tem o seu próprio token exclusivo. Usa sempre o token da coleção certa.</p></div>\n'
+  + ns.map(n => {
+    const cd = colls[n], tk = cd.token||'', apiUrl = `${SERVER_URL}/api/${n}`;
+    if (!tk) return `<div class="card" style="margin-bottom:10px"><div style="display:flex;align-items:center;gap:9px"><span style="font-family:var(--M);font-weight:700;color:var(--G)">${n}</span><span style="font-size:12px;color:var(--MU)">Sem token</span><button class="btn btn-p btn-sm" style="margin-left:auto" onclick="regenerateToken('${n}')">Gerar Token</button></div></div>`;
+    return `<div style="background:var(--W);border:1px solid var(--B);border-radius:14px;margin-bottom:12px;overflow:hidden">
+      <div style="display:flex;align-items:center;gap:10px;padding:13px 16px;border-bottom:1px solid var(--B)">
+        <div style="width:34px;height:34px;background:var(--Gd);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0"><svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:15px;height:15px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <div style="flex:1"><div style="font-size:14px;font-weight:700">${n}</div>${cd.desc?`<div style="font-size:11.5px;color:var(--MU)">${cd.desc}</div>`:''}</div>
+        <span style="font-size:10px;background:var(--Gd);color:var(--G);padding:2px 8px;border-radius:10px;font-weight:600">${S.recs(n).length} reg.</span>
+        <button class="btn btn-g btn-sm" onclick="nav('collections');setTimeout(()=>selectColl('${n}'),100)">Ver →</button>
+      </div>
+      <div style="background:var(--SB);padding:13px 15px">
+        <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Token exclusivo</div>
+        <div style="display:flex;align-items:center;gap:7px;background:rgba(0,0,0,.3);border-radius:8px;padding:8px 11px;margin-bottom:8px">
+          <span style="font-family:var(--M);font-size:11px;color:#fde68a;flex:1;word-break:break-all">${tk}</span>
+          <button class="btn btn-xs" style="background:rgba(255,255,255,.1);color:#fff;border:none" onclick="cpTxt('${tk}')">📋</button>
         </div>
-      </div>`;
-      return `<div style="background:var(--W);border:1px solid var(--B);border-radius:14px;margin-bottom:12px;overflow:hidden">
-        <!-- Header da coleção -->
-        <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--B)">
-          <div style="width:36px;height:36px;background:var(--Gd);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0">
-            <svg viewBox="0 0 24 24" fill="none" stroke="var(--G)" stroke-width="2" style="width:16px;height:16px"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px">
+          <div style="background:rgba(0,0,0,.2);border-radius:7px;padding:8px 10px">
+            <div style="font-size:8px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">URL GET</div>
+            <div style="font-family:var(--M);font-size:9px;color:#86efac;word-break:break-all;margin-bottom:4px">${apiUrl}?token=${tk.slice(0,16)}…</div>
+            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.55);border:none" onclick="cpTxt('${apiUrl}?token=${tk}')">Copiar URL</button>
           </div>
-          <div style="flex:1">
-            <div style="font-size:15px;font-weight:700;color:var(--T)">${n}</div>
-            ${cd.desc?`<div style="font-size:12px;color:var(--MU)">${cd.desc}</div>`:''}
-          </div>
-          <span style="font-size:10px;background:var(--Gd);color:var(--G);padding:2px 8px;border-radius:10px;font-weight:600">${S.recs(n).length} registos</span>
-          <button class="btn btn-g btn-sm" onclick="nav('collections');setTimeout(()=>selectColl('${n}'),100)">Ver dados →</button>
-        </div>
-
-        <!-- Token -->
-        <div style="background:var(--SB);padding:14px 16px">
-          <div style="font-size:9.5px;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px">Token exclusivo desta coleção</div>
-          <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.3);border-radius:8px;padding:9px 12px;margin-bottom:10px">
-            <span style="font-family:var(--M);font-size:11.5px;color:#fde68a;flex:1;word-break:break-all">${tk}</span>
-            <button class="btn btn-xs" style="background:rgba(255,255,255,.1);color:#fff;border:none;flex-shrink:0;padding:4px 10px" onclick="cpTxt('${tk}')">📋 Copiar</button>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px">
-            <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:10px 11px">
-              <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">URL Completa</div>
-              <div style="font-family:var(--M);font-size:9.5px;color:#86efac;word-break:break-all;margin-bottom:6px">${apiUrl}?token=${tk.slice(0,20)}…</div>
-              <button class="btn btn-xs" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:none" onclick="cpTxt('${apiUrl}?token=${tk}')">📋 Copiar URL</button>
-            </div>
-            <div style="background:rgba(0,0,0,.2);border-radius:8px;padding:10px 11px">
-              <div style="font-size:9px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px">Header Auth</div>
-              <div style="font-family:var(--M);font-size:9.5px;color:#86efac;margin-bottom:6px">Authorization: Bearer ${tk.slice(0,18)}…</div>
-              <button class="btn btn-xs" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);border:none" onclick="cpTxt('Authorization: Bearer ${tk}')">📋 Copiar Header</button>
-            </div>
-          </div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('curl ${apiUrl} -H \\'Authorization: Bearer ${tk}\\'')">📋 cURL GET</button>
-            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('curl -X POST ${apiUrl} -H \\'Authorization: Bearer ${tk}\\' -H \\'Content-Type: application/json\\' -d \\'{}\\'')">📋 cURL POST</button>
-            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.1)" onclick="cpJsExample('${n}','${tk}')">📋 JavaScript</button>
-            <button class="btn btn-xs" style="background:rgba(22,163,74,.2);color:var(--G2);border:1px solid rgba(22,163,74,.3);margin-left:auto" onclick="loadExplorerWithToken('${tk}');loadExplorer('${n}')">▶ Testar</button>
+          <div style="background:rgba(0,0,0,.2);border-radius:7px;padding:8px 10px">
+            <div style="font-size:8px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Auth Header</div>
+            <div style="font-family:var(--M);font-size:9px;color:#86efac;margin-bottom:4px">Bearer ${tk.slice(0,16)}…</div>
+            <button class="btn btn-xs" style="background:rgba(255,255,255,.07);color:rgba(255,255,255,.55);border:none" onclick="cpTxt('Authorization: Bearer ${tk}')">Copiar</button>
           </div>
         </div>
-      </div>`;
-    }).join('')}`;
+        <div style="display:flex;gap:5px;flex-wrap:wrap">
+          <button class="btn btn-xs" style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)" onclick="cpTxt('curl ${apiUrl} -H \\'Authorization: Bearer ${tk}\\'')">cURL</button>
+          <button class="btn btn-xs" style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1)" onclick="cpJsExample('${n}','${tk}')">JS</button>
+          <button class="btn btn-xs" style="background:rgba(22,163,74,.2);color:var(--G2);border:1px solid rgba(22,163,74,.3);margin-left:auto" onclick="loadExplorerWithToken('${tk}');loadExplorer('${n}')">▶ Testar</button>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
 }
 
 function cpJsExample(coll, tk) {
-  cpTxt(`const BASE = '${SERVER_URL}/api';\nconst TOKEN = '${tk}';\nconst H = { 'Authorization': \`Bearer \${TOKEN}\`, 'Content-Type': 'application/json' };\n\n// Listar\nconst { data } = await (await fetch(\`\${BASE}/${coll}\`, { headers: H })).json();\n\n// Criar\nconst novo = await (await fetch(\`\${BASE}/${coll}\`, { method:'POST', headers: H, body: JSON.stringify({campo:'valor'}) })).json();\n\n// Atualizar\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`, { method:'PATCH', headers: H, body: JSON.stringify({campo:'novo'}) });\n\n// Eliminar\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`, { method:'DELETE', headers: H });`);
+  cpTxt(`const BASE = '${SERVER_URL}/api';\nconst TOKEN = '${tk}';\nconst H = { 'Authorization': \`Bearer \${TOKEN}\`, 'Content-Type': 'application/json' };\n\nconst { data } = await (await fetch(\`\${BASE}/${coll}\`, { headers: H })).json();\nconst novo = await (await fetch(\`\${BASE}/${coll}\`, { method:'POST', headers: H, body: JSON.stringify({campo:'valor'}) })).json();\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`, { method:'PATCH', headers: H, body: JSON.stringify({campo:'novo'}) });\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`, { method:'DELETE', headers: H });`);
 }
 
 async function regenerateToken(coll) {
@@ -1756,87 +2439,147 @@ async function regenerateToken(coll) {
 }
 
 async function revokeToken(key) {
-  if(!confirm('Revogar? Qualquer app que use este token perderá acesso.'))return;
+  if(!confirm('Revogar este token?'))return;
   try {
     await apiFetch('/tokens/'+key, { method:'DELETE' });
     S.setTokens(S.tokens().filter(t=>t.key!==key));
-    S.addAct('token','Token revogado');
     renderTokens(); updateBadges(); syncTesterTokens();
     toast('Token revogado','in');
   } catch(e) { toast('Erro: '+e.message,'er'); }
 }
 
 function syncTesterTokens() {
-  const sel=document.getElementById('t-tk-sel'); if(!sel)return;
-  const ts=S.tokens();
-  sel.innerHTML='<option value="">-- seleciona --</option>'+ts.map(t=>`<option value="${t.key}">${t.name}</option>`).join('');
-  if(ts.length){sel.value=ts[0].key; document.getElementById('t-tk').value=ts[0].key;}
+  const sel = document.getElementById('t-tk-sel'); if(!sel) return;
+  const colls = S.colls();
+  const opts = ['<option value="">-- seleciona token --</option>'];
+  Object.entries(colls).forEach(([n,c]) => { if(c.token) opts.push(`<option value="${c.token}">🔑 ${n}</option>`); });
+  S.tokens().forEach(t => { if(!Object.values(colls).some(c=>c.token===t.key)) opts.push(`<option value="${t.key}">${t.name}</option>`); });
+  sel.innerHTML = opts.join('');
+  const firstTk = Object.values(colls).find(c=>c.token)?.token || S.tokens()[0]?.key || '';
+  if (firstTk) { sel.value=firstTk; const inp=document.getElementById('t-tk'); if(inp) inp.value=firstTk; }
 }
-function syncToken() { const s=document.getElementById('t-tk-sel'),i=document.getElementById('t-tk'); if(s&&i&&s.value)i.value=s.value; }
+
+function syncToken() { const s=document.getElementById('t-tk-sel'),i=document.getElementById('t-tk'); if(s&&i&&s.value) i.value=s.value; }
 
 // ════════════════════════════════
 //  API EXPLORER
 // ════════════════════════════════
-function renderExplorer() {
-  const c=S.colls(), ns=Object.keys(c), list=document.getElementById('ep-list');
-  if(!ns.length){list.innerHTML='<div style="padding:14px;font-size:12px;color:var(--MU)">Cria uma coleção para ver os endpoints.</div>';return;}
-  list.innerHTML=ns.map(n=>`<div class="ep-sec"><div class="ep-sec-label">${n}</div><div class="ep-item" onclick="loadEp('GET','${SERVER_URL}/api/${n}')"><span class="mth m-get">GET</span><span class="ep-path">/${n}</span></div><div class="ep-item" onclick="loadEp('GET','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-get">GET</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('POST','${SERVER_URL}/api/${n}')"><span class="mth m-post">POST</span><span class="ep-path">/${n}</span></div><div class="ep-item" onclick="loadEp('PUT','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-put">PUT</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('PATCH','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-pat">PATCH</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('DELETE','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-del">DEL</span><span class="ep-path">/${n}/{id}</span></div></div>`).join('');
+function tBodyToggle() {
+  const m = document.getElementById('t-method').value;
+  if (['POST','PUT','PATCH'].includes(m)) {
+    document.querySelectorAll('.t-tab').forEach(t=>t.classList.remove('on'));
+    document.querySelectorAll('.t-panel').forEach(p=>p.classList.remove('on'));
+    document.querySelectorAll('.t-tab')[2]?.classList.add('on');
+    document.getElementById('t-body-panel')?.classList.add('on');
+  }
 }
-
-function loadEp(method, url) {
-  document.getElementById('t-method').value=method;
-  document.getElementById('t-url').value=url;
-  tBodyToggle();
-  document.querySelectorAll('.ep-item').forEach(e=>e.classList.remove('on'));
-  event.currentTarget?.classList.add('on');
-}
-
-function tBodyToggle() { const m=document.getElementById('t-method').value; }
 
 function tTab(id, el) {
   document.querySelectorAll('.t-tab').forEach(t=>t.classList.remove('on'));
   document.querySelectorAll('.t-panel').forEach(p=>p.classList.remove('on'));
   el.classList.add('on');
-  document.getElementById('t-'+id).classList.add('on');
+  document.getElementById('t-'+id)?.classList.add('on');
+}
+
+let paramCount = 0;
+function addParam(k='',v='') {
+  paramCount++;
+  const id='p'+paramCount, div=document.createElement('div');
+  div.id='param-'+id; div.style.cssText='display:flex;gap:5px;align-items:center;margin-bottom:4px';
+  div.innerHTML=`<input class="ip ip-sm ip-mo" style="flex:1" placeholder="chave" value="${k}" oninput="buildQpFromParams()"><input class="ip ip-sm ip-mo" style="flex:1" placeholder="valor" value="${v}" oninput="buildQpFromParams()"><button class="btn btn-d btn-xs" onclick="document.getElementById('param-${id}').remove();buildQpFromParams()">✕</button>`;
+  document.getElementById('t-params-list').appendChild(div);
+}
+function buildQpFromParams() {
+  const rows=document.querySelectorAll('#t-params-list > div'), params=[];
+  rows.forEach(row=>{const ins=row.querySelectorAll('input');if(ins[0]?.value) params.push(`${ins[0].value}=${ins[1]?.value||''}`);});
+  document.getElementById('t-qp').value=params.join('&');
+}
+function formatBody() { try{const el=document.getElementById('t-body');el.value=JSON.stringify(JSON.parse(el.value),null,2);}catch{} }
+function clearBody() { document.getElementById('t-body').value=''; }
+
+function autoFillToken() {
+  const url=document.getElementById('t-url').value, colls=S.colls();
+  for (const [name,c] of Object.entries(colls)) {
+    if (url.includes('/api/'+name) && c.token) {
+      document.getElementById('t-tk').value=c.token;
+      const s=document.getElementById('t-tk-sel'); if(s) s.value=c.token;
+      toast(`Token de "${name}" preenchido`,'ok'); return;
+    }
+  }
+  const first=Object.values(colls).find(c=>c.token)?.token||S.tokens()[0]?.key||'';
+  if (first) { document.getElementById('t-tk').value=first; toast('Token preenchido','ok'); }
+  else toast('Sem tokens. Cria uma coleção primeiro.','wa');
+}
+
+function renderExplorer() {
+  const c=S.colls(), ns=Object.keys(c), list=document.getElementById('ep-list');
+  if(!ns.length){list.innerHTML='<div style="padding:12px;font-size:12px;color:var(--MU)">Cria uma coleção para ver os endpoints.</div>';return;}
+  list.innerHTML=ns.map(n=>`<div class="ep-sec">
+    <div class="ep-sec-label" style="display:flex;justify-content:space-between"><span>${n}</span>${c[n].token?'<span style="color:var(--G2);font-size:9px">🔑</span>':''}</div>
+    <div class="ep-item" onclick="loadEp('GET','${SERVER_URL}/api/${n}')"><span class="mth m-get">GET</span><span class="ep-path">all</span></div>
+    <div class="ep-item" onclick="loadEp('GET','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-get">GET</span><span class="ep-path">:id</span></div>
+    <div class="ep-item" onclick="loadEp('POST','${SERVER_URL}/api/${n}')"><span class="mth m-post">POST</span><span class="ep-path">create</span></div>
+    <div class="ep-item" onclick="loadEp('PATCH','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-pat">PATCH</span><span class="ep-path">:id</span></div>
+    <div class="ep-item" onclick="loadEp('PUT','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-put">PUT</span><span class="ep-path">:id</span></div>
+    <div class="ep-item" onclick="loadEp('DELETE','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-del">DEL</span><span class="ep-path">:id</span></div>
+  </div>`).join('');
+}
+
+function loadEp(method, url) {
+  document.getElementById('t-method').value=method;
+  document.getElementById('t-url').value=url;
+  autoFillToken(); tBodyToggle();
+  document.querySelectorAll('.ep-item').forEach(e=>e.classList.remove('on'));
+  event?.currentTarget?.classList.add('on');
 }
 
 async function runTest() {
-  const method = document.getElementById('t-method').value;
-  const rawUrl = document.getElementById('t-url').value.trim();
-  const token  = document.getElementById('t-tk').value.trim() || App.token || '';
-  const bodyStr= document.getElementById('t-body').value.trim();
-  const qp     = document.getElementById('t-qp')?.value.trim() || '';
-  const btn    = document.getElementById('run-btn');
-  btn.disabled = true;
-  btn.innerHTML= '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;animation:spin 1s linear infinite"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M19.07 4.93l-2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M19.07 19.07l-2.83-2.83"/></svg> Running';
+  const method  = document.getElementById('t-method').value;
+  const rawUrl  = document.getElementById('t-url').value.trim();
+  const token   = document.getElementById('t-tk').value.trim();
+  const bodyStr = document.getElementById('t-body')?.value.trim()||'';
+  const qp      = document.getElementById('t-qp')?.value.trim()||'';
+  const btn     = document.getElementById('run-btn');
+  const rbBody  = document.getElementById('rb-body');
 
-  const base = getBase();
-  const path = rawUrl.startsWith('http') ? rawUrl : base + (rawUrl.startsWith('/') ? '' : '/') + rawUrl + (qp ? '?'+qp : '');
-  const t0   = Date.now();
+  if (!rawUrl) { toast('Insere um URL','wa'); return; }
+  if (!token)  { toast('Token em falta! Usa o separador Auth.','er'); autoFillToken(); return; }
 
+  btn.disabled=true;
+  btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg> Running…';
+  rbBody.className='rb-body emp'; rbBody.textContent='// A executar…';
+
+  let fullUrl = rawUrl.startsWith('http') ? rawUrl : SERVER_URL+(rawUrl.startsWith('/')?'':'/')+rawUrl;
+  if (qp) fullUrl += (fullUrl.includes('?')?'&':'?')+qp;
+
+  const t0=Date.now();
   try {
-    const opts = { method, headers: { 'Content-Type':'application/json', 'Authorization':'Bearer '+token } };
-    if (['POST','PUT','PATCH'].includes(method) && bodyStr) opts.body = bodyStr;
-    const res  = await fetch(path, opts);
-    const data = await res.json();
-    const ms   = Date.now() - t0;
-    document.getElementById('rb-st').style.display='flex';
-    document.getElementById('rb-code').textContent = res.status;
-    document.getElementById('rb-code').className = 'rb-code '+(res.ok?'rb-ok':'rb-er');
-    document.getElementById('rb-stxt').textContent = {200:'OK',201:'Created',204:'No Content',400:'Bad Request',401:'Unauthorized',404:'Not Found',405:'Method Not Allowed'}[res.status]||'';
-    document.getElementById('rb-time').textContent = ms+'ms';
-    const rb = document.getElementById('rb-body');
-    rb.className='rb-body'; rb.textContent = JSON.stringify(data,null,2);
-    S.incReq(); S.addAct('api',`${method} ${rawUrl} → ${res.status}`);
-    // sync local cache if it was a write
-    if (['POST','PUT','PATCH','DELETE'].includes(method)) {
-      const parts = rawUrl.replace(/^\/?api\/?/,'').split('/').filter(Boolean);
-      const coll = parts[0];
-      if (coll) { try { const r=await apiFetch('/api/'+coll); S.setRecs(coll,r.data||[]); } catch {} }
+    let extraH={}; try{extraH=JSON.parse(document.getElementById('t-headers')?.value||'{}');}catch{}
+    const opts={method, headers:{'Content-Type':'application/json','Authorization':'Bearer '+token,...extraH}};
+    if (['POST','PUT','PATCH'].includes(method) && bodyStr) opts.body=bodyStr;
+    const res=await fetch(fullUrl,opts);
+    const ms=Date.now()-t0;
+    let data; try{data=await res.json();}catch{data={raw:await res.text()};}
+
+    const badge=document.getElementById('rb-status-badge');
+    if(badge){badge.style.display='inline-block';badge.textContent=res.status+' '+({200:'OK',201:'Created',204:'No Content',400:'Bad Request',401:'Unauthorized',403:'Forbidden',404:'Not Found',409:'Conflict',500:'Server Error'}[res.status]||'');badge.style.background=res.ok?'var(--Gd)':'#fef2f2';badge.style.color=res.ok?'var(--G)':'var(--ERR)';}
+    const timeEl=document.getElementById('rb-time'); if(timeEl) timeEl.textContent=ms+'ms';
+    const copyBtn=document.getElementById('rb-copy'); if(copyBtn) copyBtn.style.display='inline-flex';
+
+    rbBody.className='rb-body';
+    rbBody.textContent=JSON.stringify(data,null,2);
+    if(res.status===401) rbBody.textContent+='\n\n// ⚠️  401 Unauthorized\n// Cada coleção tem o seu próprio token. Verifica no separador Auth.';
+
+    S.incReq(); S.addAct('api',`${method} → ${res.status} (${ms}ms)`);
+
+    if(['POST','PUT','PATCH','DELETE'].includes(method)){
+      const coll=fullUrl.replace(/.*\/api\//,'').split(/[/?]/)[0];
+      if(coll&&S.colls()[coll]){try{const sv=App.token;App.token=token;const r=await apiFetch('/api/'+coll);S.setRecs(coll,r.data||[]);App.token=sv;}catch{}}
+      if(App.page==='collections'&&App.activeColl) renderRecs(App.activeColl);
     }
-    if(App.page==='dashboard') renderDash();
   } catch(e) {
-    document.getElementById('rb-body').textContent = '// Erro: ' + e.message;
+    rbBody.className='rb-body';
+    rbBody.textContent='// ❌ Erro: '+e.message+'\n\n// O servidor Render adormece após 15min de inactividade.\n// Aguarda 30-60 segundos e tenta novamente.';
   }
   btn.disabled=false;
   btn.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg> Run';
@@ -1846,22 +2589,22 @@ async function runTest() {
 //  AI ASSISTANT
 // ════════════════════════════════
 function updateAICtx() {
-  const c=S.colls(), ns=Object.keys(c);
-  const el=document.getElementById('ai-ctx');
-  if(!ns.length){el.innerHTML='Sem coleções. <a href="#" onclick="nav(\'collections\');return false" style="color:var(--G)">Criar uma →</a>';return;}
-  el.innerHTML=ns.map(n=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:3px 0"><span style="font-family:var(--M);font-size:11px;color:var(--G)">${n}</span><span>${S.recs(n).length} reg.</span></div>`).join('')+`<div class="div" style="margin:8px 0"></div><div>${S.tokens().length} token(s) ativo(s)</div>`;
+  const c=S.colls(), ns=Object.keys(c), el=document.getElementById('ai-ctx');
+  if(!ns.length){el.innerHTML='Sem coleções. <a href="#" onclick="nav(\'collections\');return false" style="color:var(--G)">Criar →</a>';return;}
+  el.innerHTML=ns.map(n=>`<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid var(--B)"><span style="font-family:var(--M);font-size:11px;color:var(--G)">${n}</span><span style="font-size:11px;color:var(--MU)">${S.recs(n).length} reg.</span></div>`).join('')
+  +`<div style="margin-top:7px;font-size:11px;color:var(--MU)">${S.tokens().length} token(s) • ${S.files().length} ficheiro(s)</div>`;
 }
 
 function clearAI() {
   App.aiHistory=[];
-  document.getElementById('ai-msgs').innerHTML=`<div class="ai-msg ai"><div class="ai-ava ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg></div><div class="ai-bub">Chat limpo! Como posso ajudar?</div></div>`;
+  document.getElementById('ai-msgs').innerHTML=`<div class="ai-msg ai"><div class="ai-ava ai"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/></svg></div><div class="ai-bub">Chat limpo!</div></div>`;
 }
 
 function aiPre(txt) { document.getElementById('ai-inp').value=txt; sendAI(); }
 
 async function sendAI() {
-  const inp=document.getElementById('ai-inp');
-  const msg=inp.value.trim(); if(!msg)return;
+  const inp=document.getElementById('ai-inp'), msg=inp.value.trim();
+  if(!msg) return;
   inp.value=''; inp.style.height='auto';
   addAIMsg('user',msg);
   const tid='ty_'+Date.now();
@@ -1870,57 +2613,61 @@ async function sendAI() {
   msgs.scrollTop=msgs.scrollHeight;
 
   const c=S.colls(), ns=Object.keys(c);
-  const ctx=ns.map(n=>{const r=S.recs(n);const fs=[...new Set(r.flatMap(x=>Object.keys(x).filter(k=>!k.startsWith('_'))))];return`Coleção "${n}": ${r.length} registos, campos: ${fs.join(', ')||'(vazia)'}`}).join('\n');
-  const tk=(S.tokens()[0]||{}).key||'apl_SEU_TOKEN';
+  const firstColl=ns[0]||'minha_colecao';
+  const tk=c[firstColl]?.token||S.tokens()[0]?.key||'apl_SEU_TOKEN';
+  const ctx=ns.map(n=>{const r=S.recs(n),fs=[...new Set(r.flatMap(x=>Object.keys(x).filter(k=>!k.startsWith('_'))))];return`• ${n} (${r.length} reg${c[n].token?', token próprio':''}): [${fs.join(', ')||'vazia'}]`;}).join('\n');
 
-  const sys=`És o assistente IA do Apply, uma plataforma de API storage simples (como SheetDB mas melhor). Responde sempre em português europeu. Sê técnico, direto e útil.
+  const sys=`És o assistente IA do Apply. Responde sempre em português europeu. Sê técnico e direto.
 
-ESTADO DO UTILIZADOR:
-${ctx||'Sem coleções criadas.'}
-Tokens ativos: ${S.tokens().length}
-Base URL da API: /api
-Exemplo de token: ${tk}
+APPLY — CONCEITO CHAVE:
+Cada coleção tem o seu PRÓPRIO token exclusivo gerado automaticamente.
+BASE URL: ${SERVER_URL}
+Ficheiros: ${SERVER_URL}/files/{id} (URL público)
+
+ESTADO:
+${ctx||'Sem coleções.'}
+Token de exemplo (${firstColl}): ${tk}
 
 REGRAS:
-- Para código usa blocos de código com a linguagem indicada (javascript, python, bash, php)
-- Quando mostrares URLs usa sempre /api como base
-- Se o utilizador pedir para criar algo, explica como fazê-lo na interface
-- Sê conciso mas completo`;
+- Usa SEMPRE ${SERVER_URL}/api nos exemplos
+- Menciona que cada coleção tem token próprio
+- Para 401: verificar token da coleção específica
+- Para código: blocos \`\`\`javascript \`\`\`python \`\`\`bash`;
 
   App.aiHistory.push({role:'user',content:msg});
   let resp='';
-
   try {
     const ck=S.claudeKey();
     if(ck&&ck.length>10){
-      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:sys,messages:App.aiHistory.slice(-12)})});
+      const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1200,system:sys,messages:App.aiHistory.slice(-10)})});
       const data=await res.json();
-      if(data.error)throw new Error(data.error.message);
+      if(data.error) throw new Error(data.error.message);
       resp=data.content?.[0]?.text||'Sem resposta.';
-    } else {
-      resp=localAI(msg,ctx,tk);
-    }
+    } else { resp=localAI(msg,ctx,tk,firstColl); }
     App.aiHistory.push({role:'assistant',content:resp});
-  } catch(e) {
-    resp=e.message?.includes('Failed to fetch')?`Erro de rede (CORS). A IA local responde:\n\n${localAI(msg,ctx,tk)}`:localAI(msg,ctx,tk);
-  }
+  } catch(e) { resp='Erro de rede. Resposta local:\n\n'+localAI(msg,ctx,tk,firstColl); }
 
   document.getElementById(tid)?.remove();
   addAIMsg('ai',resp);
   msgs.scrollTop=msgs.scrollHeight;
-  updateAICtx(); renderDash(); updateBadges();
+  updateAICtx(); updateBadges();
 }
 
-function localAI(msg, ctx, tk) {
-  const m=msg.toLowerCase();
-  if(m.includes('javascript')||m.includes(' js ')||m.includes('fetch')){return `Aqui está um exemplo completo em JavaScript:\n\`\`\`javascript\nconst BASE = '/api';\nconst TOKEN = '${tk}';\nconst H = { 'Authorization': \`Bearer \${TOKEN}\`, 'Content-Type': 'application/json' };\n\n// Listar todos os registos\nconst { data } = await (await fetch(\`\${BASE}/produtos\`, { headers: H })).json();\nconsole.log(data); // Array de registos\n\n// Criar novo registo\nconst novo = await (await fetch(\`\${BASE}/produtos\`, {\n  method: 'POST', headers: H,\n  body: JSON.stringify({ nome: 'Teclado', preco: 89.99 })\n})).json();\nconsole.log(novo.id); // rec_xxxxxxxx\n\n// Atualizar\nawait fetch(\`\${BASE}/produtos/\${novo.id}\`, {\n  method: 'PUT', headers: H,\n  body: JSON.stringify({ nome: 'Teclado Pro', preco: 99.99 })\n});\n\n// Eliminar\nawait fetch(\`\${BASE}/produtos/\${novo.id}\`, { method: 'DELETE', headers: H });\n\`\`\``;}
-  if(m.includes('python')){return `Exemplo em Python:\n\`\`\`python\nimport requests\n\nBASE = '/api'\nH = {'Authorization': 'Bearer ${tk}'}\n\n# Listar\ndata = requests.get(f'{BASE}/produtos', headers=H).json()['data']\n\n# Criar\nnovo = requests.post(f'{BASE}/produtos', headers=H,\n  json={'nome': 'Teclado', 'preco': 89.99}).json()\nprint(novo['id'])\n\n# Atualizar\nrequests.put(f'{BASE}/produtos/{novo[\"id\"]}', headers=H,\n  json={'preco': 79.99})\n\n# Eliminar\nrequests.delete(f'{BASE}/produtos/{novo[\"id\"]}', headers=H)\n\`\`\``;}
-  if(m.includes('curl')){return `Exemplos cURL:\n\`\`\`bash\n# Listar\ncurl /api/produtos \\\\\n  -H "Authorization: Bearer ${tk}"\n\n# Criar\ncurl -X POST /api/produtos \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"nome":"Teclado","preco":89.99}'\n\n# Atualizar (PUT)\ncurl -X PUT /api/produtos/rec_xxx \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -d '{"preco":79.99}'\n\n# Eliminar\ncurl -X DELETE /api/produtos/rec_xxx \\\\\n  -H "Authorization: Bearer ${tk}"\n\`\`\``;}
-  if(m.includes('token')||m.includes('autenti')||m.includes('401')){return `**Autenticação no Apply**\n\nInclui o token em cada request via header (recomendado):\n\`\`\`\nAuthorization: Bearer ${tk}\n\`\`\`\n\nOu via query string:\n\`\`\`\n/api/colecao?token=${tk}\n\`\`\`\n\n**Erro 401?** Causas comuns:\n- Token errado ou revogado\n- Header mal formatado (tens de escrever "Bearer " antes do token)\n- Token com permissões insuficientes\n\n${S.tokens().length===0?'⚠️ Ainda não tens tokens! Vai a **Tokens → Novo Token**.':`Tens ${S.tokens().length} token(s) ativo(s). Vai a **Tokens** para ver.`}`;}
-  if(m.includes('cri')&&(m.includes('cole')||m.includes('tabela'))){return `Para criar uma coleção:\n\n**Via interface:** Clica em **"Nova Coleção"** na sidebar ou no Dashboard.\n\n**Via API** (coleção criada automaticamente no primeiro POST):\n\`\`\`bash\ncurl -X POST /api/minha_colecao \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"campo": "valor"}'\n\`\`\`\n\n${ctx?'As tuas coleções atuais:\n'+ctx:'Ainda não tens coleções criadas.'}`;}
-  if(m.includes('partilh')||m.includes('share')){return `Para partilhar uma coleção:\n\n1. Vai a **Partilhar** na sidebar\n2. Clica em **"Novo Link"**\n3. Seleciona a coleção, permissões e expiração\n4. Copia o link ou token gerado\n\nO link permite acesso direto à API da coleção sem expor o teu token principal.`;}
-  if(m.includes('export')||m.includes('backup')){return `Para exportar dados:\n\n**Via interface:** Vai a **Coleções** → seleciona uma → clica em **"Exportar JSON"**.\n\n**Via API:**\n\`\`\`bash\ncurl /api/produtos \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  > backup_produtos.json\n\`\`\`\n\nO ficheiro exportado inclui todos os registos com IDs e timestamps.`;}
-  return `Olá! Posso ajudar-te com o Apply. Algumas coisas que faço:\n\n• **Gerar código** — diz "mostra JavaScript", "exemplo Python", "gera cURL"\n• **Explicar a API** — endpoints, autenticação, erros comuns\n• **Estruturar dados** — como organizar coleções para o teu projeto\n• **Debug** — se tiveres erros, descreve o que acontece\n\n${ctx?`**Estado atual:**\n${ctx}`:''}\n\n**Dica:** Para respostas com IA real, cola a tua chave Claude (console.anthropic.com) no campo acima.`;}
+function localAI(msg,ctx,tk,coll='minha_colecao') {
+  const m=msg.toLowerCase(), base=`${SERVER_URL}/api`;
+  if(m.includes('javascript')||m.includes(' js ')||m.includes('fetch'))
+    return `**JavaScript — ${coll}:**\n\`\`\`javascript\nconst BASE='${base}', TOKEN='${tk}';\nconst H={'Authorization':\`Bearer \${TOKEN}\`,'Content-Type':'application/json'};\n\n// Listar\nconst {data}=await(await fetch(\`\${BASE}/${coll}\`,{headers:H})).json();\n\n// Criar\nconst novo=await(await fetch(\`\${BASE}/${coll}\`,{method:'POST',headers:H,body:JSON.stringify({campo:'valor'})})).json();\n\n// Atualizar\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`,{method:'PATCH',headers:H,body:JSON.stringify({campo:'novo'})});\n\n// Eliminar\nawait fetch(\`\${BASE}/${coll}/\${novo._id}\`,{method:'DELETE',headers:H});\n\`\`\``;
+  if(m.includes('python'))
+    return `**Python — ${coll}:**\n\`\`\`python\nimport requests\nH={'Authorization':'Bearer ${tk}'}\ndata=requests.get('${base}/${coll}',headers=H).json()['data']\nnovo=requests.post('${base}/${coll}',headers=H,json={'campo':'valor'}).json()\nrequests.patch(f'${base}/${coll}/{novo[\"_id\"]}',headers=H,json={'campo':'novo'})\nrequests.delete(f'${base}/${coll}/{novo[\"_id\"]}',headers=H)\n\`\`\``;
+  if(m.includes('curl'))
+    return `**cURL — ${coll}:**\n\`\`\`bash\ncurl ${base}/${coll} -H "Authorization: Bearer ${tk}"\ncurl -X POST ${base}/${coll} -H "Authorization: Bearer ${tk}" -H "Content-Type: application/json" -d '{"campo":"valor"}'\ncurl -X PATCH ${base}/${coll}/rec_xxx -H "Authorization: Bearer ${tk}" -d '{"campo":"novo"}'\ncurl -X DELETE ${base}/${coll}/rec_xxx -H "Authorization: Bearer ${tk}"\n\`\`\``;
+  if(m.includes('401')||m.includes('token')||m.includes('autent'))
+    return `**Erro 401 — Token inválido**\n\nCada coleção tem o seu token exclusivo!\n\n1. Vai a **Tokens** na sidebar\n2. Encontra a coleção **${coll}**\n3. Copia o token correto\n\n**Token de ${coll}:** \`${tk}\`\n\nOu usa o URL com token:\n\`${base}/${coll}?token=${tk}\``;
+  if(m.includes('ficheiro')||m.includes('imagem')||m.includes('upload'))
+    return `**Upload de ficheiros:**\n\`\`\`javascript\nconst reader=new FileReader();\nreader.onload=async e=>{\n  const res=await fetch('${SERVER_URL}/files',{\n    method:'POST',\n    headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'},\n    body:JSON.stringify({name:file.name,type:file.type,data:e.target.result})\n  });\n  const {url}=await res.json();\n  console.log(url); // URL público: ${SERVER_URL}/files/file_xxx\n};\nreader.readAsDataURL(file);\n\`\`\`\nOu vai a **Ficheiros & Imagens** na sidebar para upload direto.`;
+  return `Olá! Posso ajudar com o Apply.\n\n**Coleções:** ${ctx||'Nenhuma ainda.'}\n\nPede-me:\n• Código JS, Python ou cURL\n• Como resolver erro 401\n• Como usar ficheiros/imagens\n• Como estruturar dados\n\n💡 Cola a tua chave Claude acima para IA real.`;
+}
+
 
 function addAIMsg(role, text) {
   const msgs=document.getElementById('ai-msgs'), isAI=role==='ai';
@@ -2063,48 +2810,222 @@ function clearAll() {
 // ════════════════════════════════
 //  DOCS
 // ════════════════════════════════
-function showDoc(lang) {
-  ['js','py','cu'].forEach(l=>{
-    document.getElementById('doc-'+l).style.display=l===lang?'block':'none';
-    const b=document.getElementById('dl-'+l);
-    if(b) b.className=l===lang?'btn btn-s btn-sm':'btn btn-g btn-sm';
-  });
-}
+function showDoc(lang) {}
+function updateDocsToken() {}
 
-function updateDocsToken() {
-  const tk = _getToken() || 'apl_SEU_TOKEN';
-  ['docs-token-example','docs-token-example2'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.textContent=tk.slice(0,30)+'…';
+function showDTab(tab) {
+  ['setup','read','write','files','advanced','errors'].forEach(t=>{
+    const c=document.getElementById('dtab-'+t+'-content'); if(c) c.style.display=t===tab?'block':'none';
+    const b=document.getElementById('dtab-'+t); if(b) b.className=t===tab?'btn btn-p btn-sm':'btn btn-g btn-sm';
   });
+  renderDocTab(tab);
 }
+function showSetupLang(l){['js','ts','py','cu','php','dart'].forEach(x=>{const d=document.getElementById('setup-'+x);if(d)d.style.display=x===l?'block':'none';const b=document.getElementById('sl-'+x);if(b)b.className=x===l?'btn btn-p btn-xs':'btn btn-g btn-xs';});}
+function showReadLang(l){['js','py','cu'].forEach(x=>{const d=document.getElementById('read-'+x);if(d)d.style.display=x===l?'block':'none';const b=document.getElementById('rl-'+x);if(b)b.className=x===l?'btn btn-p btn-xs':'btn btn-g btn-xs';});}
+function showWriteLang(l){['js','py','cu'].forEach(x=>{const d=document.getElementById('write-'+x);if(d)d.style.display=x===l?'block':'none';const b=document.getElementById('wl-'+x);if(b)b.className=x===l?'btn btn-p btn-xs':'btn btn-g btn-xs';});}
+function showFileLang(l){['js','node','py','dart'].forEach(x=>{const d=document.getElementById('file-'+x);if(d)d.style.display=x===l?'block':'none';const b=document.getElementById('fl-'+x);if(b)b.className=x===l?'btn btn-p btn-xs':'btn btn-g btn-xs';});}
 
 // ════════════════════════════════
 //  INIT
 // ════════════════════════════════
+function renderDocTab(tab) {
+  const colls=S.colls(), ns=Object.keys(colls);
+  const C=ns[0]||'minha_colecao';
+  const tk=colls[C]?.token||S.tokens()[0]?.key||'apl_SEU_TOKEN';
+  const B=SERVER_URL;
+  const set=(id,txt)=>{const el=document.getElementById(id);if(el)el.textContent=txt;};
+
+  set('docs-base-url-setup',B+'/api/'+C);
+  set('docs-token-setup',tk);
+  set('docs-server-check',B);
+
+  if(tab==='setup'){
+    set('sc-js',`const API={base:'${B}/api',token:'${tk}',headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'}};
+const get=(col,id='')=>fetch(\`\${API.base}/\${col}\${id?'/'+id:''}\`,{headers:API.headers}).then(r=>r.json());
+const post=(col,data)=>fetch(\`\${API.base}/\${col}\`,{method:'POST',headers:API.headers,body:JSON.stringify(data)}).then(r=>r.json());
+const patch=(col,id,d)=>fetch(\`\${API.base}/\${col}/\${id}\`,{method:'PATCH',headers:API.headers,body:JSON.stringify(d)}).then(r=>r.json());
+const remove=(col,id)=>fetch(\`\${API.base}/\${col}/\${id}\`,{method:'DELETE',headers:API.headers}).then(r=>r.json());
+
+// Uso
+const items=await get('${C}');
+const novo=await post('${C}',{nome:'João',valor:42});
+await patch('${C}',novo._id,{valor:99});
+await remove('${C}',novo._id);`);
+    set('sc-ts',`const BASE='${B}/api', TOKEN='${tk}';
+const H={'Authorization':\`Bearer \${TOKEN}\`,'Content-Type':'application/json'};
+const list=<T>(col:string,p?:Record<string,string>)=>fetch(\`\${BASE}/\${col}\${p?'?'+new URLSearchParams(p):''}\`,{headers:H}).then(r=>r.json()).then(d=>d.data as T[]);
+const get=<T>(col:string,id:string)=>fetch(\`\${BASE}/\${col}/\${id}\`,{headers:H}).then(r=>r.json() as Promise<T>);
+const create=<T>(col:string,b:Partial<T>)=>fetch(\`\${BASE}/\${col}\`,{method:'POST',headers:H,body:JSON.stringify(b)}).then(r=>r.json() as Promise<T>);
+const update=<T>(col:string,id:string,b:Partial<T>)=>fetch(\`\${BASE}/\${col}/\${id}\`,{method:'PATCH',headers:H,body:JSON.stringify(b)}).then(r=>r.json() as Promise<T>);
+const del=(col:string,id:string)=>fetch(\`\${BASE}/\${col}/\${id}\`,{method:'DELETE',headers:H});`);
+    set('sc-py',`import requests
+BASE,TOKEN='${B}/api','${tk}'
+H={'Authorization':f'Bearer {TOKEN}','Content-Type':'application/json'}
+get_all=lambda col,**p:requests.get(f'{BASE}/{col}',headers=H,params=p).json()['data']
+get_one=lambda col,id:requests.get(f'{BASE}/{col}/{id}',headers=H).json()
+create=lambda col,d:requests.post(f'{BASE}/{col}',headers=H,json=d).json()
+update=lambda col,id,d:requests.patch(f'{BASE}/{col}/{id}',headers=H,json=d).json()
+delete=lambda col,id:requests.delete(f'{BASE}/{col}/{id}',headers=H).json()
+
+items=get_all('${C}')
+novo=create('${C}',{'nome':'João','valor':42})
+update('${C}',novo['_id'],{'valor':99})
+delete('${C}',novo['_id'])`);
+    set('sc-cu',`BASE="${B}/api"\nTOKEN="${tk}"\ncurl $BASE/${C} -H "Authorization: Bearer $TOKEN"\ncurl -X POST $BASE/${C} -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{"nome":"João","valor":42}'\ncurl -X PATCH $BASE/${C}/rec_xxx -H "Authorization: Bearer $TOKEN" -d '{"valor":99}'\ncurl -X DELETE $BASE/${C}/rec_xxx -H "Authorization: Bearer $TOKEN"`);
+    set('sc-php',`<?php\ndefine('BASE','${B}/api');\ndefine('TK','${tk}');\nfunction api($m,$p,$b=[]){$c=curl_init(BASE.$p);curl_setopt_array($c,[CURLOPT_RETURNTRANSFER=>1,CURLOPT_CUSTOMREQUEST=>$m,CURLOPT_HTTPHEADER=>['Authorization: Bearer '.TK,'Content-Type: application/json'],...($b?[CURLOPT_POSTFIELDS=>json_encode($b)]:[])]);$r=curl_exec($c);curl_close($c);return json_decode($r,1);}\n$items=api('GET','/${C}')['data'];\n$novo=api('POST','/${C}',['nome'=>'João']);\napi('PATCH','/${C}/'.$novo['_id'],['valor'=>99]);\napi('DELETE','/${C}/'.$novo['_id']);`);
+    set('sc-dart',`import 'dart:convert';\nimport 'package:http/http.dart' as http;\nconst B='${B}/api',TK='${tk}';\nfinal H={'Authorization':'Bearer \$TK','Content-Type':'application/json'};\nFuture<List> getAll(String col)async{final r=await http.get(Uri.parse('\$B/\$col'),headers:H);return jsonDecode(r.body)['data'];}\nFuture<Map> create(String col,Map d)async{final r=await http.post(Uri.parse('\$B/\$col'),headers:H,body:jsonEncode(d));return jsonDecode(r.body);}\nFuture<Map> update(String col,String id,Map d)async{final r=await http.patch(Uri.parse('\$B/\$col/\$id'),headers:H,body:jsonEncode(d));return jsonDecode(r.body);}\nFuture del(String col,String id)=>http.delete(Uri.parse('\$B/\$col/\$id'),headers:H);`);
+  }
+  if(tab==='read'){
+    const re=document.getElementById('docs-endpoints-read');
+    if(re)re.innerHTML=[['GET',`/api/${C}`,'Listar todos'],['GET',`/api/${C}?_limit=10&_offset=0`,'Paginação'],['GET',`/api/${C}?campo=valor`,'Filtrar'],['GET',`/api/${C}?_sort=nome&_order=asc`,'Ordenar'],['GET',`/api/${C}/{id}`,'Por ID']].map(([m,u,d])=>`<div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-get">${m}</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">${u}</span><span style="color:var(--MU)">${d}</span><button class="btn btn-g btn-xs" onclick="cpTxt('${B}${u}?token=${tk}')">Copiar</button></div>`).join('');
+    set('rc-js',`const H={'Authorization':'Bearer ${tk}'},B='${B}/api';\nconst {data}=await fetch(\`\${B}/${C}\`,{headers:H}).then(r=>r.json());\nconst filtrado=await fetch(\`\${B}/${C}?status=ativo\`,{headers:H}).then(r=>r.json());\nconst pag=await fetch(\`\${B}/${C}?_limit=10&_offset=0\`,{headers:H}).then(r=>r.json());\nconst ord=await fetch(\`\${B}/${C}?_sort=nome&_order=asc\`,{headers:H}).then(r=>r.json());\nconst item=await fetch(\`\${B}/${C}/rec_abc\`,{headers:H}).then(r=>r.json());\n// URL com token no query\nconst url='${B}/api/${C}?token=${tk}';`);
+    set('rc-py',`import requests\nH={'Authorization':'Bearer ${tk}'}\nB='${B}/api'\ndata=requests.get(f'{B}/${C}',headers=H).json()['data']\nfiltrado=requests.get(f'{B}/${C}',headers=H,params={'status':'ativo'}).json()['data']\npag=requests.get(f'{B}/${C}',headers=H,params={'_limit':10,'_offset':0}).json()\nord=requests.get(f'{B}/${C}',headers=H,params={'_sort':'nome','_order':'asc'}).json()\nitem=requests.get(f'{B}/${C}/rec_abc',headers=H).json()`);
+    set('rc-cu',`curl ${B}/api/${C} -H "Authorization: Bearer ${tk}"\ncurl "${B}/api/${C}?token=${tk}"\ncurl "${B}/api/${C}?status=ativo" -H "Authorization: Bearer ${tk}"\ncurl "${B}/api/${C}?_limit=10&_offset=0" -H "Authorization: Bearer ${tk}"\ncurl "${B}/api/${C}?_sort=nome&_order=asc" -H "Authorization: Bearer ${tk}"\ncurl ${B}/api/${C}/rec_abc -H "Authorization: Bearer ${tk}"`);
+  }
+  if(tab==='write'){
+    const we=document.getElementById('docs-endpoints-write');
+    if(we)we.innerHTML=[['POST',`/api/${C}`,'Criar registo'],['PATCH',`/api/${C}/{id}`,'Atualizar campos'],['PUT',`/api/${C}/{id}`,'Substituir completo'],['DELETE',`/api/${C}/{id}`,'Eliminar'],['POST',`/api/${C}/bulk`,'Bulk insert']].map(([m,u,d])=>`<div style="display:flex;gap:7px;align-items:center;padding:7px 10px;background:var(--BG);border-radius:7px;font-size:12px"><span class="mth m-${{'POST':'post','PATCH':'pat','PUT':'put','DELETE':'del'}[m]}">${m}</span><span style="font-family:var(--M);color:var(--G);font-size:11px;flex:1">${u}</span><span style="color:var(--MU)">${d}</span></div>`).join('');
+    set('wc-js',`const H={'Authorization':'Bearer ${tk}','Content-Type':'application/json'},B='${B}/api';\n// Criar\nconst novo=await fetch(\`\${B}/${C}\`,{method:'POST',headers:H,body:JSON.stringify({nome:'João',valor:42})}).then(r=>r.json());\n// Atualizar campos\nawait fetch(\`\${B}/${C}/\${novo._id}\`,{method:'PATCH',headers:H,body:JSON.stringify({valor:99})}).then(r=>r.json());\n// Substituir completo\nawait fetch(\`\${B}/${C}/\${novo._id}\`,{method:'PUT',headers:H,body:JSON.stringify({nome:'João Silva',valor:99})}).then(r=>r.json());\n// Eliminar\nawait fetch(\`\${B}/${C}/\${novo._id}\`,{method:'DELETE',headers:H});\n// Bulk\nconst bulk=await fetch(\`\${B}/${C}/bulk\`,{method:'POST',headers:H,body:JSON.stringify([{nome:'A'},{nome:'B'},{nome:'C'}])}).then(r=>r.json());\n// bulk = {inserted:3,data:[...]}`);
+    set('wc-py',`import requests\nH={'Authorization':'Bearer ${tk}','Content-Type':'application/json'}\nB='${B}/api'\nnovo=requests.post(f'{B}/${C}',headers=H,json={'nome':'João','valor':42}).json()\nrequests.patch(f'{B}/${C}/{novo["_id"]}',headers=H,json={'valor':99})\nrequests.put(f'{B}/${C}/{novo["_id"]}',headers=H,json={'nome':'João Silva','valor':99})\nrequests.delete(f'{B}/${C}/{novo["_id"]}',headers=H)\nbulk=requests.post(f'{B}/${C}/bulk',headers=H,json=[{'nome':'A'},{'nome':'B'}]).json()`);
+    set('wc-cu',`curl -X POST ${B}/api/${C} -H "Authorization: Bearer ${tk}" -H "Content-Type: application/json" -d '{"nome":"João","valor":42}'\ncurl -X PATCH ${B}/api/${C}/rec_xxx -H "Authorization: Bearer ${tk}" -d '{"valor":99}'\ncurl -X PUT ${B}/api/${C}/rec_xxx -H "Authorization: Bearer ${tk}" -d '{"nome":"João Silva"}'\ncurl -X DELETE ${B}/api/${C}/rec_xxx -H "Authorization: Bearer ${tk}"\ncurl -X POST ${B}/api/${C}/bulk -H "Authorization: Bearer ${tk}" -H "Content-Type: application/json" -d '[{"nome":"A"},{"nome":"B"}]'`);
+  }
+  if(tab==='files'){
+    set('dc-file-link',`// 1. Upload\nconst {url}=await fetch('${B}/files',{method:'POST',headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'},body:JSON.stringify({name:'foto.jpg',type:'image/jpeg',data:base64Str})}).then(r=>r.json());\n// url = "${B}/files/file_abc"\n\n// 2. Guarda no registo\nawait fetch('${B}/api/${C}',{method:'POST',headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'},body:JSON.stringify({nome:'Produto',foto:url,doc:url})}).then(r=>r.json());`);
+    set('fc-js',`// Upload de imagem/ficheiro (browser)\ndocument.getElementById('file-input').addEventListener('change',async e=>{\n  const file=e.target.files[0];\n  if(file.size>4*1024*1024){alert('Máx 4MB');return;}\n  const b64=await new Promise(res=>{const r=new FileReader();r.onload=e=>res(e.target.result);r.readAsDataURL(file);});\n  const {id,url,name}=await fetch('${B}/files',{\n    method:'POST',\n    headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'},\n    body:JSON.stringify({name:file.name,type:file.type,data:b64,size:file.size})\n  }).then(r=>r.json());\n  console.log('URL público:',url); // usa em <img src={url}> sem auth\n  document.getElementById('preview').src=url;\n});\n// <input type="file" id="file-input" accept="image/*,.pdf,.csv,.json">\n// <img id="preview">`);
+    set('fc-node',`import fs from 'fs';\nimport fetch from 'node-fetch';\nasync function uploadFile(path){\n  const data=fs.readFileSync(path);\n  const b64='data:application/octet-stream;base64,'+data.toString('base64');\n  const res=await fetch('${B}/files',{method:'POST',headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'},body:JSON.stringify({name:path.split('/').pop(),type:'application/octet-stream',data:b64})});\n  return (await res.json()).url;\n}\nasync function listFiles(){return (await (await fetch('${B}/files',{headers:{'Authorization':'Bearer ${tk}'}})).json()).files;}\nasync function deleteFile(id){await fetch(\`${B}/files/\${id}\`,{method:'DELETE',headers:{'Authorization':'Bearer ${tk}'}});}`);
+    set('fc-py',`import requests,base64,mimetypes\nfrom pathlib import Path\nH={'Authorization':'Bearer ${tk}','Content-Type':'application/json'}\ndef upload(path):\n    p=Path(path);mime=mimetypes.guess_type(path)[0]or'application/octet-stream'\n    b64=f'data:{mime};base64,'+base64.b64encode(p.read_bytes()).decode()\n    return requests.post('${B}/files',headers=H,json={'name':p.name,'type':mime,'data':b64,'size':p.stat().st_size}).json()\ndef list_files():return requests.get('${B}/files',headers=H).json()['files']\ndef delete_file(id):requests.delete(f'${B}/files/{id}',headers=H)\nr=upload('imagem.jpg')\nprint(r['url'])  # URL público permanente, sem auth`);
+    set('fc-dart',`import 'dart:convert',dart:io';\nimport 'package:http/http.dart' as http;\nconst B='${B}',TK='${tk}';\nfinal H={'Authorization':'Bearer \$TK','Content-Type':'application/json'};\nFuture<String?> uploadFile(File file) async {\n  final bytes=await file.readAsBytes();\n  final b64='data:image/jpeg;base64,'+base64Encode(bytes);\n  final r=await http.post(Uri.parse('\$B/files'),headers:H,body:jsonEncode({'name':file.path.split('/').last,'type':'image/jpeg','data':b64}));\n  return r.statusCode==201?jsonDecode(r.body)['url']:null;\n}\n// Usar: Image.network(url!)  ← sem auth necessária`);
+  }
+  if(tab==='advanced'){
+    set('dc-adv-filter',`const H={'Authorization':'Bearer ${tk}'},B='${B}/api';\n// Paginação\nconst pg=await fetch(\`\${B}/${C}?_limit=10&_offset=0\`,{headers:H}).then(r=>r.json());\n// pg.data, pg.total, pg.count, pg.offset, pg.limit\n// Ordenação\nconst ord=await fetch(\`\${B}/${C}?_sort=nome&_order=desc\`,{headers:H}).then(r=>r.json());\n// Filtro exacto\nconst f=await fetch(\`\${B}/${C}?status=ativo&categoria=tech\`,{headers:H}).then(r=>r.json());\n// Combinar\nconst all=await fetch(\`\${B}/${C}?categoria=tech&_sort=data&_order=desc&_limit=5\`,{headers:H}).then(r=>r.json());`);
+    set('dc-adv-bulk',`// JS Bulk\nconst res=await fetch('${B}/api/${C}/bulk',{method:'POST',headers:{'Authorization':'Bearer ${tk}','Content-Type':'application/json'},body:JSON.stringify([{nome:'Item 1',valor:10},{nome:'Item 2',valor:20},{nome:'Item 3',valor:30}])}).then(r=>r.json());\n// res = {inserted:3,data:[{_id:'rec_...',...}]}\n\n// Python Bulk\nimport requests\nitems=[{'nome':f'Item {i}','valor':i*10} for i in range(1,11)]\nres=requests.post('${B}/api/${C}/bulk',headers={'Authorization':'Bearer ${tk}'},json=items).json()`);
+  }
+}
+
+const DEPLOY_HOOK = 'https://api.render.com/deploy/srv-d6uqag450q8c7398f68g?key=bS7WLCrRclA';
+
+function fetchWithTimeout(url, ms) {
+  return new Promise((resolve, reject) => {
+    const ctrl = new AbortController();
+    const id = setTimeout(() => { ctrl.abort(); reject(new Error('timeout')); }, ms);
+    fetch(url, { signal: ctrl.signal, mode: 'no-cors' })
+      .then(r => { clearTimeout(id); resolve(r); })
+      .catch(e => { clearTimeout(id); reject(e); });
+  });
+}
+
 async function checkServer() {
   const dot = document.getElementById('server-dot');
   const txt = document.getElementById('server-txt');
   const btn = document.getElementById('a-btn');
-  try {
-    const res = await fetch(SERVER_URL + '/ping', { signal: AbortSignal.timeout(8000) });
+  const retryBtn = document.getElementById('server-retry');
+  const wakeArea = document.getElementById('wake-area');
+
+  dot.style.background = '#d97706';
+  dot.style.animation = 'pulse-dot 1s ease-in-out infinite';
+  txt.textContent = 'A verificar ligação ao servidor…';
+  btn.disabled = true;
+  if (retryBtn) retryBtn.style.display = 'none';
+  if (wakeArea) wakeArea.style.display = 'none';
+
+  let ok = false;
+  const endpoints = [SERVER_URL + '/ping', SERVER_URL + '/health', SERVER_URL];
+
+  for (const url of endpoints) {
+    try {
+      // Tenta com CORS normal primeiro
+      const ctrl = new AbortController();
+      const id = setTimeout(() => ctrl.abort(), 9000);
+      const res = await fetch(url, { signal: ctrl.signal }).catch(() => null);
+      clearTimeout(id);
+      if (res !== null) { ok = true; break; }
+    } catch {}
+    try {
+      // Fallback: no-cors (não lê o body mas confirma que o servidor respondeu)
+      await fetchWithTimeout(url, 9000);
+      ok = true; break;
+    } catch {}
+  }
+
+  dot.style.animation = 'none';
+  if (ok) {
     dot.style.background = '#16a34a';
-    dot.style.animation = 'none';
     txt.textContent = 'Servidor online ✓';
     btn.disabled = false;
-  } catch {
-    try {
-      const res2 = await fetch(SERVER_URL, { signal: AbortSignal.timeout(10000) });
-      dot.style.background = '#16a34a';
-      dot.style.animation = 'none';
-      txt.textContent = 'Servidor online ✓';
-      btn.disabled = false;
-    } catch {
-      dot.style.background = '#dc2626';
-      dot.style.animation = 'none';
-      txt.textContent = 'Servidor offline — tenta mais tarde';
-      btn.disabled = true;
-    }
+  } else {
+    dot.style.background = '#dc2626';
+    txt.textContent = 'Servidor sem resposta';
+    btn.disabled = false;
+    if (retryBtn) retryBtn.style.display = 'inline-flex';
+    if (wakeArea) wakeArea.style.display = 'block';
   }
+}
+
+async function wakeServer() {
+  const btn = document.getElementById('wake-btn');
+  const prog = document.getElementById('wake-prog');
+  const bar = document.getElementById('wake-prog-bar');
+  const countdown = document.getElementById('wake-countdown');
+  const dot = document.getElementById('server-dot');
+  const txt = document.getElementById('server-txt');
+
+  btn.disabled = true;
+  btn.textContent = 'A acordar…';
+  prog.style.display = 'block';
+
+  // Dispara o deploy hook
+  try {
+    await fetch(DEPLOY_HOOK, { method: 'POST', mode: 'no-cors' });
+  } catch {}
+
+  // Contagem regressiva de 40s enquanto espera o servidor acordar
+  let elapsed = 0;
+  const total = 40;
+  dot.style.background = '#d97706';
+  dot.style.animation = 'pulse-dot 1s ease-in-out infinite';
+
+  const tick = setInterval(async () => {
+    elapsed++;
+    const pct = Math.min((elapsed / total) * 100, 95);
+    bar.style.width = pct + '%';
+    countdown.textContent = `A aguardar resposta… ${total - elapsed}s`;
+
+    if (elapsed >= total) {
+      clearInterval(tick);
+      bar.style.width = '100%';
+      countdown.textContent = 'A verificar ligação…';
+      btn.disabled = false;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg> Acordar servidor';
+      prog.style.display = 'none';
+      dot.style.animation = 'none';
+      await checkServer();
+    }
+  }, 1000);
+
+  // Enquanto conta, vai tentando a cada 5s
+  const checkInterval = setInterval(async () => {
+    try {
+      const ctrl = new AbortController();
+      const id = setTimeout(() => ctrl.abort(), 4000);
+      const res = await fetch(SERVER_URL + '/ping', { signal: ctrl.signal });
+      clearTimeout(id);
+      if (res) {
+        clearInterval(checkInterval);
+        clearInterval(tick);
+        bar.style.width = '100%';
+        countdown.textContent = '';
+        prog.style.display = 'none';
+        btn.disabled = false;
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></svg> Acordar servidor';
+        dot.style.animation = 'none';
+        dot.style.background = '#16a34a';
+        txt.textContent = 'Servidor online ✓';
+        document.getElementById('a-btn').disabled = false;
+        document.getElementById('wake-area').style.display = 'none';
+        document.getElementById('server-retry').style.display = 'none';
+      }
+    } catch {}
+  }, 5000);
 }
 
 (async function init() {
@@ -2113,16 +3034,4 @@ async function checkServer() {
   const savedUser  = (() => { try { return JSON.parse(localStorage.getItem(K+'user') || localStorage.getItem('apl3_user') || 'null'); } catch { return null; } })();
   if (savedToken && savedUser) {
     App.token = savedToken;
-    App.user  = savedUser;
-    _saveToken(savedToken);
-    try {
-      await loadFromServer();
-      enterApp();
-    } catch(e) {
-      console.warn('Falha ao restaurar sessão:', e.message);
-    }
-  }
-})();
-</script>
-</body>
-</html>
+    App.us
