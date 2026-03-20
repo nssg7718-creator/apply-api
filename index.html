@@ -394,18 +394,14 @@ tbody tr:hover td{background:var(--BG)}
       <input class="ip" id="a-pass" type="password" placeholder="mínimo 6 caracteres">
     </div>
     <div class="ferr" id="a-err"></div>
-    <button class="btn btn-p" id="a-btn" style="width:100%;justify-content:center;margin-top:6px" onclick="doAuth()">
+    <button class="btn btn-p" id="a-btn" style="width:100%;justify-content:center;margin-top:6px" onclick="doAuth()" disabled>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
       Criar conta grátis
     </button>
-    <div class="auth-sep">ou experimenta grátis</div>
-    <button class="demo-btn" onclick="enterDemo()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-      Entrar em modo Demo (sem conta)
-    </button>
-    <p style="font-size:11px;color:var(--MU);text-align:center;margin-top:12px;line-height:1.5">
-      Em modo demo os dados ficam no browser.<br>Com conta ficam guardados e acessíveis em qualquer sítio.
-    </p>
+    <div id="server-status" style="display:flex;align-items:center;gap:7px;justify-content:center;margin-top:12px;font-size:12px;color:var(--MU)">
+      <div id="server-dot" style="width:8px;height:8px;border-radius:50%;background:#d97706;flex-shrink:0"></div>
+      <span id="server-txt">A verificar ligação ao servidor...</span>
+    </div>
   </div>
 </div>
 
@@ -726,7 +722,7 @@ tbody tr:hover td{background:var(--BG)}
             <select class="ip ip-sm ip-mo" id="t-method" style="width:80px" onchange="tBodyToggle()">
               <option>GET</option><option>POST</option><option>PUT</option><option>PATCH</option><option>DELETE</option>
             </select>
-            <input class="ip ip-sm ip-mo" id="t-url" value="/api/produtos" style="flex:1;min-width:120px">
+            <input class="ip ip-sm ip-mo" id="t-url" value="" style="flex:1;min-width:120px" placeholder="https://meusiteapi-m958.onrender.com/api/colecao">
             <button class="btn btn-p btn-sm" onclick="runTest()" id="run-btn">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
               Run
@@ -834,7 +830,7 @@ GET /api/produtos?token=apl_xxxxx</div></div>
           <button class="btn btn-g btn-sm" id="dl-cu" onclick="showDoc('cu')">cURL</button>
           <button class="btn btn-g btn-sm" id="dl-ph" onclick="showDoc('ph')">PHP</button>
         </div>
-        <div id="doc-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript / Fetch</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-js').innerText)">Copiar</button></div><div class="cb-body" id="dc-js"><span class="ck">const</span> BASE = <span class="cs">'https://apply.dev/api'</span>;
+        <div id="doc-js" class="cb"><div class="cb-hd"><span class="cb-lang">JavaScript / Fetch</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-js').innerText)">Copiar</button></div><div class="cb-body" id="dc-js"><span class="ck">const</span> BASE = <span class="cs">'/api'</span>;
 <span class="ck">const</span> TOKEN = <span class="cs">'apl_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>;
 <span class="ck">const</span> H = { <span class="cs">'Authorization'</span>: <span class="cs">`Bearer ${TOKEN}`</span>, <span class="cs">'Content-Type'</span>: <span class="cs">'application/json'</span> };
 
@@ -857,7 +853,7 @@ GET /api/produtos?token=apl_xxxxx</div></div>
 <span class="ck">await</span> fetch(<span class="cs">`${BASE}/produtos/${novo.id}`</span>, { method: <span class="cs">'DELETE'</span>, headers: H });</div></div>
         <div id="doc-py" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">Python</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-py').innerText)">Copiar</button></div><div class="cb-body" id="dc-py"><span class="ck">import</span> requests
 
-BASE = <span class="cs">'https://apply.dev/api'</span>
+BASE = <span class="cs">'/api'</span>
 H = {<span class="cs">'Authorization'</span>: <span class="cs">'Bearer apl_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>}
 
 <span class="co"># Listar</span>
@@ -874,25 +870,25 @@ requests.put(f<span class="cs">'{BASE}/produtos/{novo["id"]}'</span>, headers=H,
 <span class="co"># Eliminar</span>
 requests.delete(f<span class="cs">'{BASE}/produtos/{novo["id"]}'</span>, headers=H)</div></div>
         <div id="doc-cu" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">cURL</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-cu').innerText)">Copiar</button></div><div class="cb-body" id="dc-cu"><span class="co"># Listar</span>
-curl https://apply.dev/api/produtos \
+curl /api/produtos \
   -H <span class="cs">"Authorization: Bearer apl_xxx"</span>
 
 <span class="co"># Criar</span>
-curl -X POST https://apply.dev/api/produtos \
+curl -X POST /api/produtos \
   -H <span class="cs">"Authorization: Bearer apl_xxx"</span> \
   -H <span class="cs">"Content-Type: application/json"</span> \
   -d <span class="cs">'{"nome":"Teclado","preco":89.99}'</span>
 
 <span class="co"># Atualizar (PUT = substituição completa)</span>
-curl -X PUT https://apply.dev/api/produtos/rec_xxx \
+curl -X PUT /api/produtos/rec_xxx \
   -H <span class="cs">"Authorization: Bearer apl_xxx"</span> \
   -d <span class="cs">'{"nome":"Teclado Pro","preco":99.99}'</span>
 
 <span class="co"># Eliminar</span>
-curl -X DELETE https://apply.dev/api/produtos/rec_xxx \
+curl -X DELETE /api/produtos/rec_xxx \
   -H <span class="cs">"Authorization: Bearer apl_xxx"</span></div></div>
         <div id="doc-ph" class="cb" style="display:none"><div class="cb-hd"><span class="cb-lang">PHP</span><button class="btn btn-g btn-xs" onclick="cpTxt(document.getElementById('dc-ph').innerText)">Copiar</button></div><div class="cb-body" id="dc-ph"><span class="ck">&lt;?php</span>
-$base = <span class="cs">'https://apply.dev/api'</span>;
+$base = <span class="cs">'/api'</span>;
 $token = <span class="cs">'apl_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'</span>;
 $h = [<span class="cs">"Authorization: Bearer $token"</span>, <span class="cs">'Content-Type: application/json'</span>];
 
@@ -1387,7 +1383,7 @@ function renderDash() {
 // ════════════════════════════════
 //  COLLECTIONS
 // ════════════════════════════════
-function createColl() {
+async function createColl() {
   const name = document.getElementById('mc-name').value.trim();
   const desc = document.getElementById('mc-desc').value.trim();
   const tmpl = document.getElementById('mc-tmpl').value;
@@ -1397,8 +1393,14 @@ function createColl() {
   if (c[name]) { setErr('mc',`"${name}" já existe`); return; }
   c[name] = {name, desc, created:Date.now()};
   S.setColls(c);
-  if (tmpl && TMPL[tmpl]) S.setRecs(name, [{_id:uid(),_created:Date.now(),...TMPL[tmpl]}]);
-  else S.setRecs(name, []);
+  S.setRecs(name, []);
+  // Se tiver template, envia o registo para o servidor
+  if (tmpl && TMPL[tmpl]) {
+    try {
+      const rec = await apiFetch('/api/'+name, { method:'POST', body: JSON.stringify(TMPL[tmpl]) });
+      S.setRecs(name, [rec]);
+    } catch {}
+  }
   S.addAct('coll', `Coleção <strong>${name}</strong> criada`);
   closeMo('mc');
   renderAll();
@@ -1446,8 +1448,8 @@ function renderRecs(coll) {
     </div>
     <div class="api-bar">
       <span class="mth m-get">GET</span>
-      <span>/api/${coll}?token=<span class="g">${tk.slice(0,22)}…</span></span>
-      <button class="btn btn-g" style="padding:2px 8px;font-size:10px" onclick="cpTxt('/api/${coll}?token=${tk}')">Copiar URL</button>
+      <span style="font-size:10px;word-break:break-all">${SERVER_URL}/api/${coll}?token=<span class="g">${tk.slice(0,18)}…</span></span>
+      <button class="btn btn-g" style="padding:2px 8px;font-size:10px" onclick="cpTxt('${SERVER_URL}/api/${coll}?token=${tk}')">Copiar URL</button>
       <button class="btn btn-g" style="padding:2px 8px;font-size:10px;margin-left:auto" onclick="loadExplorer('${coll}')">Testar →</button>
     </div>
     <div class="srch">
@@ -1529,7 +1531,7 @@ function exportColl(coll) {
   toast(`Exportado ${r.length} registos`,'ok');
 }
 
-function loadExplorer(coll) { document.getElementById('t-url').value='/api/'+coll; nav('explorer'); }
+function loadExplorer(coll) { document.getElementById('t-url').value=SERVER_URL+'/api/'+coll; nav('explorer'); }
 
 // ════════════════════════════════
 //  TOKENS
@@ -1584,12 +1586,12 @@ function syncToken() { const s=document.getElementById('t-tk-sel'),i=document.ge
 function renderExplorer() {
   const c=S.colls(), ns=Object.keys(c), list=document.getElementById('ep-list');
   if(!ns.length){list.innerHTML='<div style="padding:14px;font-size:12px;color:var(--MU)">Cria uma coleção para ver os endpoints.</div>';return;}
-  list.innerHTML=ns.map(n=>`<div class="ep-sec"><div class="ep-sec-label">${n}</div><div class="ep-item" onclick="loadEp('GET','/api/${n}')"><span class="mth m-get">GET</span><span class="ep-path">/${n}</span></div><div class="ep-item" onclick="loadEp('GET','/api/${n}/{id}')"><span class="mth m-get">GET</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('POST','/api/${n}')"><span class="mth m-post">POST</span><span class="ep-path">/${n}</span></div><div class="ep-item" onclick="loadEp('PUT','/api/${n}/{id}')"><span class="mth m-put">PUT</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('PATCH','/api/${n}/{id}')"><span class="mth m-pat">PATCH</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('DELETE','/api/${n}/{id}')"><span class="mth m-del">DEL</span><span class="ep-path">/${n}/{id}</span></div></div>`).join('');
+  list.innerHTML=ns.map(n=>`<div class="ep-sec"><div class="ep-sec-label">${n}</div><div class="ep-item" onclick="loadEp('GET','${SERVER_URL}/api/${n}')"><span class="mth m-get">GET</span><span class="ep-path">/${n}</span></div><div class="ep-item" onclick="loadEp('GET','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-get">GET</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('POST','${SERVER_URL}/api/${n}')"><span class="mth m-post">POST</span><span class="ep-path">/${n}</span></div><div class="ep-item" onclick="loadEp('PUT','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-put">PUT</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('PATCH','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-pat">PATCH</span><span class="ep-path">/${n}/{id}</span></div><div class="ep-item" onclick="loadEp('DELETE','${SERVER_URL}/api/${n}/{id}')"><span class="mth m-del">DEL</span><span class="ep-path">/${n}/{id}</span></div></div>`).join('');
 }
 
-function loadEp(method, path) {
+function loadEp(method, url) {
   document.getElementById('t-method').value=method;
-  document.getElementById('t-url').value=path;
+  document.getElementById('t-url').value=url;
   tBodyToggle();
   document.querySelectorAll('.ep-item').forEach(e=>e.classList.remove('on'));
   event.currentTarget?.classList.add('on');
@@ -1682,12 +1684,12 @@ async function sendAI() {
 ESTADO DO UTILIZADOR:
 ${ctx||'Sem coleções criadas.'}
 Tokens ativos: ${S.tokens().length}
-Base URL da API: https://apply.dev/api
+Base URL da API: /api
 Exemplo de token: ${tk}
 
 REGRAS:
 - Para código usa blocos de código com a linguagem indicada (javascript, python, bash, php)
-- Quando mostrares URLs usa sempre https://apply.dev/api como base
+- Quando mostrares URLs usa sempre /api como base
 - Se o utilizador pedir para criar algo, explica como fazê-lo na interface
 - Sê conciso mas completo`;
 
@@ -1717,13 +1719,13 @@ REGRAS:
 
 function localAI(msg, ctx, tk) {
   const m=msg.toLowerCase();
-  if(m.includes('javascript')||m.includes(' js ')||m.includes('fetch')){return `Aqui está um exemplo completo em JavaScript:\n\`\`\`javascript\nconst BASE = 'https://apply.dev/api';\nconst TOKEN = '${tk}';\nconst H = { 'Authorization': \`Bearer \${TOKEN}\`, 'Content-Type': 'application/json' };\n\n// Listar todos os registos\nconst { data } = await (await fetch(\`\${BASE}/produtos\`, { headers: H })).json();\nconsole.log(data); // Array de registos\n\n// Criar novo registo\nconst novo = await (await fetch(\`\${BASE}/produtos\`, {\n  method: 'POST', headers: H,\n  body: JSON.stringify({ nome: 'Teclado', preco: 89.99 })\n})).json();\nconsole.log(novo.id); // rec_xxxxxxxx\n\n// Atualizar\nawait fetch(\`\${BASE}/produtos/\${novo.id}\`, {\n  method: 'PUT', headers: H,\n  body: JSON.stringify({ nome: 'Teclado Pro', preco: 99.99 })\n});\n\n// Eliminar\nawait fetch(\`\${BASE}/produtos/\${novo.id}\`, { method: 'DELETE', headers: H });\n\`\`\``;}
-  if(m.includes('python')){return `Exemplo em Python:\n\`\`\`python\nimport requests\n\nBASE = 'https://apply.dev/api'\nH = {'Authorization': 'Bearer ${tk}'}\n\n# Listar\ndata = requests.get(f'{BASE}/produtos', headers=H).json()['data']\n\n# Criar\nnovo = requests.post(f'{BASE}/produtos', headers=H,\n  json={'nome': 'Teclado', 'preco': 89.99}).json()\nprint(novo['id'])\n\n# Atualizar\nrequests.put(f'{BASE}/produtos/{novo[\"id\"]}', headers=H,\n  json={'preco': 79.99})\n\n# Eliminar\nrequests.delete(f'{BASE}/produtos/{novo[\"id\"]}', headers=H)\n\`\`\``;}
-  if(m.includes('curl')){return `Exemplos cURL:\n\`\`\`bash\n# Listar\ncurl https://apply.dev/api/produtos \\\\\n  -H "Authorization: Bearer ${tk}"\n\n# Criar\ncurl -X POST https://apply.dev/api/produtos \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"nome":"Teclado","preco":89.99}'\n\n# Atualizar (PUT)\ncurl -X PUT https://apply.dev/api/produtos/rec_xxx \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -d '{"preco":79.99}'\n\n# Eliminar\ncurl -X DELETE https://apply.dev/api/produtos/rec_xxx \\\\\n  -H "Authorization: Bearer ${tk}"\n\`\`\``;}
-  if(m.includes('token')||m.includes('autenti')||m.includes('401')){return `**Autenticação no Apply**\n\nInclui o token em cada request via header (recomendado):\n\`\`\`\nAuthorization: Bearer ${tk}\n\`\`\`\n\nOu via query string:\n\`\`\`\nhttps://apply.dev/api/colecao?token=${tk}\n\`\`\`\n\n**Erro 401?** Causas comuns:\n- Token errado ou revogado\n- Header mal formatado (tens de escrever "Bearer " antes do token)\n- Token com permissões insuficientes\n\n${S.tokens().length===0?'⚠️ Ainda não tens tokens! Vai a **Tokens → Novo Token**.':`Tens ${S.tokens().length} token(s) ativo(s). Vai a **Tokens** para ver.`}`;}
-  if(m.includes('cri')&&(m.includes('cole')||m.includes('tabela'))){return `Para criar uma coleção:\n\n**Via interface:** Clica em **"Nova Coleção"** na sidebar ou no Dashboard.\n\n**Via API** (coleção criada automaticamente no primeiro POST):\n\`\`\`bash\ncurl -X POST https://apply.dev/api/minha_colecao \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"campo": "valor"}'\n\`\`\`\n\n${ctx?'As tuas coleções atuais:\n'+ctx:'Ainda não tens coleções criadas.'}`;}
+  if(m.includes('javascript')||m.includes(' js ')||m.includes('fetch')){return `Aqui está um exemplo completo em JavaScript:\n\`\`\`javascript\nconst BASE = '/api';\nconst TOKEN = '${tk}';\nconst H = { 'Authorization': \`Bearer \${TOKEN}\`, 'Content-Type': 'application/json' };\n\n// Listar todos os registos\nconst { data } = await (await fetch(\`\${BASE}/produtos\`, { headers: H })).json();\nconsole.log(data); // Array de registos\n\n// Criar novo registo\nconst novo = await (await fetch(\`\${BASE}/produtos\`, {\n  method: 'POST', headers: H,\n  body: JSON.stringify({ nome: 'Teclado', preco: 89.99 })\n})).json();\nconsole.log(novo.id); // rec_xxxxxxxx\n\n// Atualizar\nawait fetch(\`\${BASE}/produtos/\${novo.id}\`, {\n  method: 'PUT', headers: H,\n  body: JSON.stringify({ nome: 'Teclado Pro', preco: 99.99 })\n});\n\n// Eliminar\nawait fetch(\`\${BASE}/produtos/\${novo.id}\`, { method: 'DELETE', headers: H });\n\`\`\``;}
+  if(m.includes('python')){return `Exemplo em Python:\n\`\`\`python\nimport requests\n\nBASE = '/api'\nH = {'Authorization': 'Bearer ${tk}'}\n\n# Listar\ndata = requests.get(f'{BASE}/produtos', headers=H).json()['data']\n\n# Criar\nnovo = requests.post(f'{BASE}/produtos', headers=H,\n  json={'nome': 'Teclado', 'preco': 89.99}).json()\nprint(novo['id'])\n\n# Atualizar\nrequests.put(f'{BASE}/produtos/{novo[\"id\"]}', headers=H,\n  json={'preco': 79.99})\n\n# Eliminar\nrequests.delete(f'{BASE}/produtos/{novo[\"id\"]}', headers=H)\n\`\`\``;}
+  if(m.includes('curl')){return `Exemplos cURL:\n\`\`\`bash\n# Listar\ncurl /api/produtos \\\\\n  -H "Authorization: Bearer ${tk}"\n\n# Criar\ncurl -X POST /api/produtos \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"nome":"Teclado","preco":89.99}'\n\n# Atualizar (PUT)\ncurl -X PUT /api/produtos/rec_xxx \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -d '{"preco":79.99}'\n\n# Eliminar\ncurl -X DELETE /api/produtos/rec_xxx \\\\\n  -H "Authorization: Bearer ${tk}"\n\`\`\``;}
+  if(m.includes('token')||m.includes('autenti')||m.includes('401')){return `**Autenticação no Apply**\n\nInclui o token em cada request via header (recomendado):\n\`\`\`\nAuthorization: Bearer ${tk}\n\`\`\`\n\nOu via query string:\n\`\`\`\n/api/colecao?token=${tk}\n\`\`\`\n\n**Erro 401?** Causas comuns:\n- Token errado ou revogado\n- Header mal formatado (tens de escrever "Bearer " antes do token)\n- Token com permissões insuficientes\n\n${S.tokens().length===0?'⚠️ Ainda não tens tokens! Vai a **Tokens → Novo Token**.':`Tens ${S.tokens().length} token(s) ativo(s). Vai a **Tokens** para ver.`}`;}
+  if(m.includes('cri')&&(m.includes('cole')||m.includes('tabela'))){return `Para criar uma coleção:\n\n**Via interface:** Clica em **"Nova Coleção"** na sidebar ou no Dashboard.\n\n**Via API** (coleção criada automaticamente no primeiro POST):\n\`\`\`bash\ncurl -X POST /api/minha_colecao \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  -H "Content-Type: application/json" \\\\\n  -d '{"campo": "valor"}'\n\`\`\`\n\n${ctx?'As tuas coleções atuais:\n'+ctx:'Ainda não tens coleções criadas.'}`;}
   if(m.includes('partilh')||m.includes('share')){return `Para partilhar uma coleção:\n\n1. Vai a **Partilhar** na sidebar\n2. Clica em **"Novo Link"**\n3. Seleciona a coleção, permissões e expiração\n4. Copia o link ou token gerado\n\nO link permite acesso direto à API da coleção sem expor o teu token principal.`;}
-  if(m.includes('export')||m.includes('backup')){return `Para exportar dados:\n\n**Via interface:** Vai a **Coleções** → seleciona uma → clica em **"Exportar JSON"**.\n\n**Via API:**\n\`\`\`bash\ncurl https://apply.dev/api/produtos \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  > backup_produtos.json\n\`\`\`\n\nO ficheiro exportado inclui todos os registos com IDs e timestamps.`;}
+  if(m.includes('export')||m.includes('backup')){return `Para exportar dados:\n\n**Via interface:** Vai a **Coleções** → seleciona uma → clica em **"Exportar JSON"**.\n\n**Via API:**\n\`\`\`bash\ncurl /api/produtos \\\\\n  -H "Authorization: Bearer ${tk}" \\\\\n  > backup_produtos.json\n\`\`\`\n\nO ficheiro exportado inclui todos os registos com IDs e timestamps.`;}
   return `Olá! Posso ajudar-te com o Apply. Algumas coisas que faço:\n\n• **Gerar código** — diz "mostra JavaScript", "exemplo Python", "gera cURL"\n• **Explicar a API** — endpoints, autenticação, erros comuns\n• **Estruturar dados** — como organizar coleções para o teu projeto\n• **Debug** — se tiveres erros, descreve o que acontece\n\n${ctx?`**Estado atual:**\n${ctx}`:''}\n\n**Dica:** Para respostas com IA real, cola a tua chave Claude (console.anthropic.com) no campo acima.`;}
 
 function addAIMsg(role, text) {
@@ -1754,7 +1756,7 @@ function genShare() {
   const exp=document.getElementById('ms-exp').value;
   if(!coll){toast('Seleciona uma coleção','er');return;}
   const token=genTk('apl_sh');
-  const url=`https://apply.dev/api/${coll}?token=${token}`;
+  const url=`/api/${coll}?token=${token}`;
   const sh={id:uid(),coll,perm,exp,token,url,created:Date.now()};
   const ss=S.shares(); ss.push(sh); S.setShares(ss);
   S.addAct('share',`Link de partilha criado para <strong>${coll}</strong>`);
@@ -1807,9 +1809,35 @@ function showDoc(lang) {
 // ════════════════════════════════
 //  INIT
 // ════════════════════════════════
-(function init() {
-  const u=S.user();
-  if(u) { App.user=u; App.demo=u.email==='demo@apply.dev'; enterApp(); }
+async function checkServer() {
+  const dot = document.getElementById('server-dot');
+  const txt = document.getElementById('server-txt');
+  const btn = document.getElementById('a-btn');
+  try {
+    const res = await fetch(SERVER_URL, { signal: AbortSignal.timeout(8000) });
+    dot.style.background = '#16a34a';
+    txt.textContent = 'Servidor online ✓';
+    btn.disabled = false;
+  } catch {
+    dot.style.background = '#dc2626';
+    txt.textContent = 'Servidor offline — tenta mais tarde';
+    btn.disabled = true;
+  }
+}
+
+(async function init() {
+  checkServer();
+  const savedToken = localStorage.getItem('apply_token');
+  const savedUser  = (() => { try { return JSON.parse(localStorage.getItem(K+'user')); } catch { return null; } })();
+  if (savedToken && savedUser) {
+    App.token = savedToken;
+    App.user  = savedUser;
+    S.setTokens([{ key: savedToken, name:'Token Principal', perms:'rw', created: Date.now() }]);
+    loadFromServer().then(() => enterApp()).catch(() => {
+      localStorage.removeItem('apply_token');
+      localStorage.removeItem(K+'user');
+    });
+  }
 })();
 </script>
 </body>
